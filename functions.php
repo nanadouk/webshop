@@ -27,7 +27,6 @@
             echo "<li><a class=\"$class\" href=\"$url\">".t($item)."</a></li>";
         }
     }
-
     function content($pageId) {
         echo "<h1>".t($pageId)."</h1>";
         echo "<p>".t("content".$pageId)."</p>";
