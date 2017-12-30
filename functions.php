@@ -27,6 +27,7 @@
             echo "<li><a class=\"$class\" href=\"$url\">".t($item)."</a></li>";
         }
     }
+
     function content($pageId) {
         echo "<h1>".t($pageId)."</h1>";
         echo "<p>".t("content".$pageId)."</p>";
@@ -69,12 +70,12 @@
 
     function send_email(){
         require('PHPMailer/vendor/autoload.php');
-        $mail = new PHPMailer();
+       /* $mail = new PHPMailer();
         $mail->isSMTP();
         $mail->Host = 'smtp.bfh.ch';
         $mail->SMTPAuth = true;
-        $mail->Username = 'douka';
-        $mail->Password = '.....';
+        $mail->Username = 'douka1';
+        $mail->Password = 'TalalNusCH14!';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->From = 'anna.doukmak@students.bfh.ch';
@@ -88,6 +89,42 @@
             echo 'Message could not be sent. -> ' . $mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
+        }*/
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+        try {
+            //Server settings
+            $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.bfh.ch';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'douka1';                 // SMTP username
+            $mail->Password = 'TalalNusCH14!';                           // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587;                                    // TCP port to connect to
+
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+
+            //Recipients
+            $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
+            $mail->addAddress('anna.doukmak@gmail.com');     // Add a recipient
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Order test';
+            $mail->Body    = 'Thank you for your order!';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
         }
     }
 
