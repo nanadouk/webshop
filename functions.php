@@ -93,22 +93,23 @@
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
             //Server settings
-            $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+            $mail->SMTPDebug = 3;                                 // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'smtp.bfh.ch';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = '';                 // SMTP username
-            $mail->Password = 'PW';                           // SMTP password
+            $mail->Password = 'pw';                           // SMTP password
             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;                                    // TCP port to connect to
 
-            $mail->SMTPOptions = array(
+
+           /* $mail->SMTPOptions = array(       //with this code works but insecure
                 'ssl' => array(
                     'verify_peer' => false,
                     'verify_peer_name' => false,
                     'allow_self_signed' => true
                 )
-            );
+            );*/
 
             //Recipients
             $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
