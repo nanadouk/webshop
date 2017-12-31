@@ -1,7 +1,6 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\SMTP;
 
     function get_param($name, $default) {
         if (isset($_GET[$name]))
@@ -68,28 +67,12 @@
         return add_param($url, "page", $pageId);
     }
 
-    function send_email(){
+    if (isset($_POST['recipient'])) {
+        echo send_email($_POST['recipient']);
+    }
+
+    function send_email($recipient){
         require('PHPMailer/vendor/autoload.php');
-       /* $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->Host = 'smtp.bfh.ch';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'douka1';
-        $mail->Password = 'TalalNusCH14!';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-        $mail->From = 'anna.doukmak@students.bfh.ch';
-        $mail->FromName = 'Terra e Mare';
-        $mail->addAddress('anna.doukmak@gmail.com', 'Doukmak');
-        $mail->isHTML(true);
-        $mail->Subject = 'Order';
-        $mail->Body = 'Thank you for your order!';
-        $mail->AltBody = 'Thank you for your order!';
-        if(!$mail->send()) {
-            echo 'Message could not be sent. -> ' . $mail->ErrorInfo;
-        } else {
-            echo 'Message has been sent';
-        }*/
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
             //Server settings
@@ -102,7 +85,6 @@
             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;                                    // TCP port to connect to
 
-
            /* $mail->SMTPOptions = array(       //with this code works but insecure
                 'ssl' => array(
                     'verify_peer' => false,
@@ -113,13 +95,15 @@
 
             //Recipients
             $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
-            $mail->addAddress('anna.doukmak@gmail.com');     // Add a recipient
+            $mail->addAddress($recipient['email']);     // Add a recipient
+            $mail->addAddress('anna.doukmak@students.bfh.ch');
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Order test';
-            $mail->Body    = 'Thank you for your order!';
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            $mail->Subject = 'Order confirmation';
+            $mail->Body    = '<p>Dear '.$recipient['titel'].'. '.$recipient['lname'].'</p>
+                                <p>Thank you for your order!</p>';
+            $mail->AltBody = 'Dear '.$recipient['titel'].'. '.$recipient['lname'].'. Thank you for your order!';
 
             $mail->send();
             echo 'Message has been sent';
