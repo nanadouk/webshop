@@ -12,5 +12,8 @@
     <input type="radio" name="info[payment]" value="creditcard" required/>Creditcard<br/>
 
     <input type="hidden" name="info[product]" value="<?php echo $product ?>" />
-    <p><input type="submit" value="Submit"/></p>
+    <p>
+        <input type="submit" name="action" value="Next"/>
+        <input type="submit" name="action" value="Cancel" />
+    </p>
 </form>
