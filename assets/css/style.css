@@ -1,6 +1,6 @@
 body {
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 100%;
+	font-family: Trebuchet MS, Tahoma,sans-serif;
+	font-size: 18px;
 	color: #2c2c2c;
 	background: url("../img/bg.jpg") repeat;
 }
@@ -12,13 +12,14 @@ body {
 }
 
 /*******************TOP-MENU************************/
+
 #top-menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
    	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 20px;
 }
 
 #top-menu li {
@@ -50,8 +51,29 @@ body {
 	height: auto;
 }
 
+/*********************************************/
+aside {background-color: #8fc860;}
+
+#footer {
+	background-color: #ff6b4a;
+	color: #fff;
+	padding: 20px;
+}
+
+/***********************ORDER******************/
+#message-confirm, #message-cancel {
+	display: none;
+}
+
+/*********************SLIDER*********************/
+#slider-info {
+	float: left;
+	width: 30%;
+}
+
 #contact-info {
 	text-align: center;
+	padding: 30px 20px;
 }
 
 #contact-info .fa {
@@ -63,11 +85,37 @@ body {
 	line-height: 24px;
 }
 
-/*********************************************/
-aside {background-color: #8fc860;}
-
-#footer {
+#slider-info-2{
 	background-color: #ff6b4a;
-	color: #fff;
-	padding: 20px;
+	position: absolute;
+	bottom: 0;
+	color: white;
+	width: 30%;
+	text-align: center;
+	font-size: 22px;
+}
+
+#slider-info-2::before {
+	content: '';
+	border: 13px solid transparent;
+	border-bottom-color: #d94c2d;
+	border-left-color: #d94c2d;
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	z-index: 10;
+}
+
+#slider-info-titel{
+	text-transform: uppercase;
+}
+
+#slider-img {
+	float: right;
+	width: 70%;
+}
+
+#slider-img img {
+	width: 100%;
+	height: auto;
 }

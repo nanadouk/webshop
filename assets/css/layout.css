@@ -1,6 +1,6 @@
 .row {
 	margin: 10px 0;
-	display: relative;
+	position: relative;
 	overflow: hidden;
 }
 .row:after {
@@ -9,7 +9,7 @@
 	clear: both;
 }
 .column {
-	display: relative;
+	position: relative;
 	float: left;
 	box-sizing: border-box;
 	padding: 2%;
