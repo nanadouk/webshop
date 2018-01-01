@@ -1,4 +1,5 @@
 <?php
+    require_once("autoloader.php");
     require("functions.php");
 ?>
 <!doctype html>
@@ -15,6 +16,7 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <script src="assets/js/confirmation.js"></script>
+        <script src="assets/js/login.js"></script>
 
         <title>Webshop | <?php echo $pageId?> </title>
 	</head>

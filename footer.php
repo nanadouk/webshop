@@ -1,3 +1,3 @@
-<footer class="row" id="footer">&copy; Terra e Mare
+<footer class="row" id="footer">&copy; <?php echo date("Y"); ?> Terra e Mare
 </footer>
 

@@ -49,16 +49,20 @@
         $url = $_SERVER["PHP_SELF"];
         add_param($url, "lang", $language);
         $products = array(
-            array("name"=>"Pizza 1","description"=>"Description pizza 1","price"=>25.00),
-            array("name"=>"Pizza 2","description"=>"Description pizza 2","price"=>50.00),
-            array("name"=>"Pizza 3","description"=>"Description pizza 3","price"=>75.00)
+            array("name"=>"Pizza Margherita","description"=>"mit Tomatensauce, Mozzarella und Oregano","price"=>12.00),
+            array("name"=>"Pizza Funghi","description"=>"mit Tomatensauce, Mozzarella, Pilzen und Oregano","price"=>14.00),
+            array("name"=>"Pizza Prosciutto","description"=>"mit Tomatensauce, Mozzarella, Schinken und Oregano","price"=>16.00)
         );
         foreach ($products as $product) {
-            foreach ($product as $value) {
-                echo "<p>$value</p>";
-            }
+            echo "<div class=\"item-wrapper\">";
+            echo "<div class=\"item-description-wrapper\">";
+            echo "<p class=\"item-title\">".$product['name']."</p>";
+            echo "<p class=\"item-description\">".$product['description']."</p></div>";
             add_param($url, "page", "Options");
-            echo "<p><a href=\"".add_param($url, "product", $product['name'])."\">Buy now</a></p><br/>";
+            echo "<div class=\"item-btn-wrapper\"><a href=\"" . add_param($url, "product", $product['name']) . "\" class=\"button-price\">"
+                . number_format($product['price'], 2, ",", ".") . " CHF | 
+                        <i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a></div>";
+            echo "</div>";
         }
     }
 
@@ -173,6 +177,25 @@
             return $texts[$key][$language];
         } else {
             return "[$key]";
+        }
+    }
+
+    function authentication(){
+        session_start();
+        $users = ["bob"=>"123","alice"=>"456","eve"=>"789"];
+        if(isset($_POST["login"])) {
+            $login = $_POST["login"];
+            if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
+                $_SESSION["user"] = $login;
+            }
+        }
+        if (!isset($_SESSION["user"])) {
+            echo "<!DOCTYPE html>\n";
+            echo "<html><head>/*...*/</head><body>";
+            echo "<h3>Access Denied!</h3><p>Please login first.</p>";
+            echo "<p>&raquo; <a href=\"login.php\">Login</a></p>";
+            echo "</body></html>";
+            exit;
         }
     }
 

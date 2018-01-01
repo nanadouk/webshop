@@ -58,3 +58,16 @@
         <input type="submit" name="action" value="Cancel" />
     </p>
 </form>
+
+<div id="dialog-confirm" title="Confirm your order">
+    <p>Dear <?php echo $info['title'].". ".$info['lname']; ?></p>
+    <p>Please check your order details and confirm the order.</p>
+    <h4>Order details</h4>
+    <?php
+    echo "<p>".$info['product']."</p>";
+    echo "<p>Size: ".$info['size']."</p>";
+    echo "<p>Payment method: ".$info['payment']."</p>";
+    echo "<p>Delivery address: ".$info['street'].", ".$info['city']."</p>";
+    echo "<p>Your tel.: ".$info['tel']."</p>";
+    ?>
+</div>
