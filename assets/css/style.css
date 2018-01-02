@@ -64,6 +64,7 @@ h1{
 	padding: 0;
 	overflow: hidden;
 	text-transform: uppercase;
+	float: right;
 }
 
 #lang a{
@@ -92,7 +93,7 @@ aside {background-color: #8fc860;}
 	padding: 20px;
 }
 
-/**************************PRODUCTS****************/
+/**************************PRODUCT LIST****************/
 a.button-price {
 	float: right;
 	margin-top: 20px;
@@ -124,11 +125,16 @@ a.button-price:hover{
 }
 
 .item-description-wrapper{
-	width: 80%;
+	width: 60%;
 	margin-left: 20px;
 	box-sizing: border-box;
 	position: relative;
 	overflow: hidden;
+}
+
+.item-img{
+	width: 200px;
+	height: auto;
 	float: left;
 }
 
@@ -205,5 +211,5 @@ a.button-price:hover{
 
 
 #loggedin{
-	display: none;
+	/*display: none;*/
 }
