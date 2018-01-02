@@ -113,22 +113,29 @@ a.button-price:hover{
 
 .item-wrapper{
 	width: 100%;
-	padding: 24px 0;
-	cursor: pointer;
 	border-bottom: 1px solid #ddd;
-	margin: 4px 0;
 	position: relative;
 	overflow: hidden;
+	box-sizing: border-box;
+}
 
+.item-upper-wrapper{
+	width: auto;
+	padding: 24px 20px;
 	display: flex;
 	flex-wrap: wrap;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.item-upper-wrapper:hover{
+	background-color: rgba(143, 200, 96, 0.2);
 }
 
 .item-description-wrapper{
 	width: 60%;
 	margin-left: 20px;
 	margin-right: 20px;
-	box-sizing: border-box;
 	position: relative;
 	overflow: hidden;
 }
@@ -145,9 +152,42 @@ a.button-price:hover{
 }
 
 .item-btn-wrapper{
-	box-sizing: border-box;
 	position: relative;
 	overflow: hidden;
+}
+
+.item-options-wrapper{
+	display: none;
+	background-color: #FFFFFF;
+	width: auto;
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 20px;
+	color: grey;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+/*
+.item-options::before{
+	bottom: 170px;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	position: absolute;
+	pointer-events: none;
+	border-color: hsla(0,0%,100%,0);
+	border-bottom-color: #fff;
+	border-width: 30px;
+	margin-left: -20px;
+	height: 150px;
+	width: 0;
+}
+*/
+.options-icon{
+	float: right;
+	cursor: pointer;
+	display: block;
 }
 
 /***********************ORDER******************/

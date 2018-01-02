@@ -54,18 +54,34 @@
             array("name"=>"Pizza Prosciutto","img"=>"assets/img/pizza3.jpg", "description"=>"mit Tomatensauce, Mozzarella, Schinken und Oregano","price"=>16.00)
         );
         foreach ($products as $product) {
-            echo "<div class=\"item-wrapper\">";
-            echo "<img class=\"item-img\" src=\"".$product['img']."\" />";
-            echo "<div class=\"item-description-wrapper\">";
+            echo "<div class='item-wrapper'><div class='item-upper-wrapper'>";
+            echo "<img class='item-img' src=\"".$product['img']."\" />";
+            echo "<div class='item-description-wrapper'>";
 
-            echo "<p class=\"item-title\">".$product['name']."</p>";
-            echo "<p class=\"item-description\">".$product['description']."</p></div>";
+            echo "<p class='item-title'>".$product['name']."</p>";
+            echo "<p class='item-description'>".$product['description']."</p></div>";
             add_param($url, "page", "Options");
-            echo "<div class=\"item-btn-wrapper\"><a href=\"" . add_param($url, "product", $product['name']) . "\" class=\"button-price\">"
+            echo "<div class='item-btn-wrapper'><a href=\"" . add_param($url, "product", $product['name']) . "\" class='button-price'>"
                 . number_format($product['price'], 2, ",", ".") . " CHF | 
-                        <i class=\"fa fa-plus\" aria-hidden=\"true\"></i></a></div>";
+                        <i class='fa fa-plus' aria-hidden='true'></i></a></div>";
+            echo "</div><div class='item-options-wrapper'></div>";
             echo "</div>";
         }
+    /* todo: try with form
+        foreach ($products as $product) {
+            echo "<form class='item-wrapper' action='./' method='post'>";
+            echo "<img class='item-img' src=\"".$product['img']."\" />";
+            echo "<div class='item-description-wrapper'>";
+
+            echo "<p class='item-title'>".$product['name']."</p>";
+            echo "<p class='item-description'>".$product['description']."</p></div>";
+            add_param($url, "page", "Options");
+            echo "<div class='item-btn-wrapper'><button class='button-price'>"
+                . number_format($product['price'], 2, ",", ".") . " CHF | 
+                        <i class='fa fa-plus' aria-hidden=\"true\"></i></button></div>";
+            echo "</form>";
+        }
+    */
     }
 
     function get_url($language, $pageId){
