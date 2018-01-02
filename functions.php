@@ -50,8 +50,8 @@
         add_param($url, "lang", $language);
         $products = array(
             array("name"=>"Pizza Margherita", "img"=>"assets/img/pizza1.jpg", "description"=>"mit Tomatensauce, Mozzarella und Oregano","price"=>12.00),
-            array("name"=>"Pizza Funghi","description"=>"mit Tomatensauce, Mozzarella, Pilzen und Oregano","price"=>14.00),
-            array("name"=>"Pizza Prosciutto","description"=>"mit Tomatensauce, Mozzarella, Schinken und Oregano","price"=>16.00)
+            array("name"=>"Pizza Funghi","img"=>"assets/img/pizza2.jpg","description"=>"mit Tomatensauce, Mozzarella, Pilzen und Oregano","price"=>14.00),
+            array("name"=>"Pizza Prosciutto","img"=>"assets/img/pizza3.jpg", "description"=>"mit Tomatensauce, Mozzarella, Schinken und Oregano","price"=>16.00)
         );
         foreach ($products as $product) {
             echo "<div class=\"item-wrapper\">";
