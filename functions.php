@@ -49,12 +49,12 @@
         $url = $_SERVER["PHP_SELF"];
         add_param($url, "lang", $language);
         $products = array(
-            array("name"=>"Pizza Margherita", "img"=>"assets/img/pizza1.jpg", "description"=>"mit Tomatensauce, Mozzarella und Oregano","price"=>12.00),
-            array("name"=>"Pizza Funghi","img"=>"assets/img/pizza2.jpg","description"=>"mit Tomatensauce, Mozzarella, Pilzen und Oregano","price"=>14.00),
-            array("name"=>"Pizza Prosciutto","img"=>"assets/img/pizza3.jpg", "description"=>"mit Tomatensauce, Mozzarella, Schinken und Oregano","price"=>16.00)
+            array("name"=>"Pizza Margherita", "img"=>"assets/img/pizza1.jpg", "description"=>"with tomatensauce, mozzarella and oregano","price"=>12.00),
+            array("name"=>"Pizza Funghi","img"=>"assets/img/pizza2.jpg","description"=>"with tomatensauce, mozzarella, mushrooms and oregano","price"=>14.00),
+            array("name"=>"Pizza Prosciutto","img"=>"assets/img/pizza3.jpg", "description"=>"with tomatensauce, mozzarella, ham and oregano","price"=>16.00)
         );
         foreach ($products as $product) {
-            echo "<div class='item-wrapper'><div class='item-upper-wrapper'>";
+            echo "<div class='item-wrapper'><div class='item-upper-wrapper' onclick=\"javascript:initPrice(".$product['price'].")\">";
             echo "<img class='item-img' src=\"".$product['img']."\" />";
             echo "<div class='item-description-wrapper'>";
 
@@ -63,7 +63,7 @@
             add_param($url, "page", "Options");
             echo "<div class='item-btn-wrapper'><a href=\"" . add_param($url, "product", $product['name']) . "\" class='button-price'>"
                 . number_format($product['price'], 2, ",", ".") . " CHF | 
-                        <i class='fa fa-plus' aria-hidden='true'></i></a></div>";
+                        <i class='fa fa-angle-down' aria-hidden='true'></i></a></div>";
             echo "</div><div class='item-options-wrapper'></div>";
             echo "</div>";
         }
@@ -221,4 +221,4 @@
     $pageId = get_param("page", "Home");
     $time = time() + 60*60*24*30;
     setcookie("lang", $language, $time);
-?>
+

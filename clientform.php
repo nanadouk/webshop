@@ -49,25 +49,13 @@
         <textarea name="info[comment]" rows="5" cols="30" maxlength="150"></textarea>
     </p>
 
-    <input type="hidden" name="info[product]" value="<?php echo $info['product'] ?>" />
+    <input type="hidden" name="info[item]" value="<?php echo $info['item'] ?>" />
     <input type="hidden" name="info[size]" value="<?php echo $info['size'] ?>" />
-    <input type="hidden" name="info[payment]" value="<?php echo $info['payment'] ?>" />
+    <input type="hidden" name="info[quantity]" value="<?php echo $info['quantity'] ?>" />
+    <input type="hidden" name="info[price]" value="<?php echo $info['price'] ?>" />
 
     <p>
         <input type="submit" name="action" value="Next" />
         <input type="submit" name="action" value="Cancel" />
     </p>
 </form>
-
-<div id="dialog-confirm" title="Confirm your order">
-    <p>Dear <?php echo $info['title'].". ".$info['lname']; ?></p>
-    <p>Please check your order details and confirm the order.</p>
-    <h4>Order details</h4>
-    <?php
-    echo "<p>".$info['product']."</p>";
-    echo "<p>Size: ".$info['size']."</p>";
-    echo "<p>Payment method: ".$info['payment']."</p>";
-    echo "<p>Delivery address: ".$info['street'].", ".$info['city']."</p>";
-    echo "<p>Your tel.: ".$info['tel']."</p>";
-    ?>
-</div>

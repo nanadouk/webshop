@@ -94,20 +94,22 @@ aside {background-color: #8fc860;}
 }
 
 /**************************PRODUCT LIST****************/
-a.button-price {
-	float: right;
-	margin-top: 20px;
-	display: inline-block;
+a.button-price{
 	text-decoration: none;
+	display: inline-block;
+	margin-top: 20px;
+}
+.button-price {
 	background-color: #8fc860;
 	color: #FFFFFF;
 	padding: 10px 25px;
 	text-align: center;
 	border-radius: 3px;
 	box-shadow: 0 2px 2px rgba(0,0,0,.2);
+	font-size: 18px;
 }
 
-a.button-price:hover{
+.button-price:hover{
 	background-color: #6dab3b;
 }
 
@@ -163,10 +165,13 @@ a.button-price:hover{
 	border-bottom: 1px solid #ddd;
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
-	padding: 20px;
 	color: grey;
 	font-size: 16px;
 	box-sizing: border-box;
+}
+
+.item-options{
+	padding: 20px;
 }
 /*
 .item-options::before{
@@ -188,6 +193,41 @@ a.button-price:hover{
 	float: right;
 	cursor: pointer;
 	display: block;
+}
+
+.options-footer {
+	padding: 15px 20px;
+	background-color: rgba(242, 248, 236, 0.3);
+	position: relative;
+	width: auto;
+	box-sizing: border-box;
+}
+
+.item-quantity{
+	/*float: left;*/
+}
+.options-footer .quantity{
+	padding: 5px 10px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	width: 10px;
+}
+
+.item-quantity span{
+	display: inline-block;
+	padding: 0 5px;
+}
+.item-total{
+	position: relative;
+}
+input.button-price{
+	//float: right;
+}
+
+/*******************************CLIENTFORM*************/
+fieldset{
+	display: inline-block;
 }
 
 /***********************ORDER******************/

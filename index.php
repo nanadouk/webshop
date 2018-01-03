@@ -18,6 +18,7 @@
         <script src="assets/js/confirmation.js"></script>
         <script src="assets/js/login.js"></script>
         <script src="assets/js/options.js"></script>
+        <script src="assets/js/totalcalculation.js"></script>
 
         <title>Webshop | <?php echo $pageId?> </title>
 	</head>
