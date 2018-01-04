@@ -3,6 +3,7 @@
 
     // Directories to look in
     $dirs = [
+        'lib/',
         'model/',
     ];
 
