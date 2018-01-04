@@ -6,7 +6,7 @@ class Product {
     private $description;
     private $price;
     private $imgUrl;
-    private $category;
+    private $categoryID;
 
     public function getId() {
         return $this->id;
@@ -29,11 +29,11 @@ class Product {
     }
 
     public function getCategory(){
-        return $this->category;
+        return $this->categoryID;
     }
 
     public function __toString(){
-        return sprintf("%d) %s %d %s", $this->id, $this->name, $this->price, $this->description, $this->category);
+        return sprintf("%d) %s %d %s", $this->id, $this->name, $this->price, $this->description, $this->categoryID);
     }
 
     static public function getProducts($orderBy="id") {

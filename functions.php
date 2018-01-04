@@ -46,43 +46,22 @@
 
     function products($language, $pageId){
         echo "<h1>".t($pageId)."</h1>";
-        $url = $_SERVER["PHP_SELF"];
-        add_param($url, "lang", $language);
-       /* $products = array(
-            array("name"=>"Pizza Margherita", "img"=>"assets/img/pizza1.jpg", "description"=>"with tomatensauce, mozzarella and oregano","price"=>12.00),
-            array("name"=>"Pizza Funghi","img"=>"assets/img/pizza2.jpg","description"=>"with tomatensauce, mozzarella, mushrooms and oregano","price"=>14.00),
-            array("name"=>"Pizza Prosciutto","img"=>"assets/img/pizza3.jpg", "description"=>"with tomatensauce, mozzarella, ham and oregano","price"=>16.00)
-        );*/
-       $products = Product::getProducts();
+        $products = Product::getProducts();
         foreach ($products as $product) {
-            echo "<div class='item-wrapper'><div class='item-upper-wrapper' onclick=\"javascript:initPrice(".$product->getPrice().")\">";
+            echo "<form class='item-wrapper' action=".get_url($language, "Clientform")." method='post'>";
+            echo "<div class='item-upper-wrapper' onclick=\"javascript:initPrice(".$product->getPrice().")\">";
             echo "<img class='item-img' src=\"".$product->getImg()."\" />";
             echo "<div class='item-description-wrapper'>";
 
             echo "<p class='item-title'>".$product->getName()."</p>";
             echo "<p class='item-description'>".$product->getDescription()."</p></div>";
-            add_param($url, "page", "Options");
-            echo "<div class='item-btn-wrapper'><a href=\"" . add_param($url, "product", $product->getName()) . "\" class='button-price'>"
+            echo "<div class='item-btn-wrapper'><a class='button-price'>"
                 . number_format($product->getPrice(), 2, ",", ".") . " CHF | 
                         <i class='fa fa-angle-down' aria-hidden='true'></i></a></div>";
             echo "</div><div class='item-options-wrapper'></div>";
-            echo "</div>";
-        }
-    /* todo: try with form
-        foreach ($products as $product) {
-            echo "<form class='item-wrapper' action='./' method='post'>";
-            echo "<img class='item-img' src=\"".$product['img']."\" />";
-            echo "<div class='item-description-wrapper'>";
-
-            echo "<p class='item-title'>".$product['name']."</p>";
-            echo "<p class='item-description'>".$product['description']."</p></div>";
-            add_param($url, "page", "Options");
-            echo "<div class='item-btn-wrapper'><button class='button-price'>"
-                . number_format($product['price'], 2, ",", ".") . " CHF | 
-                        <i class='fa fa-plus' aria-hidden=\"true\"></i></button></div>";
+            echo "<input type='hidden' name='product[id]' value=".$product->getId()." />";
             echo "</form>";
         }
-    */
     }
 
     function get_url($language, $pageId){

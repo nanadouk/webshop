@@ -34,5 +34,5 @@ function changeRadio(change, id) {
 
 function changeTotal(id) {
     total = quantity * parseFloat(price);
-    document.getElementById("total"+id).value=total.toFixed(2).replace(".", ",") + " CHF";
+    document.getElementById("total"+id).firstChild.innerHTML=total.toFixed(2).replace(".", ",") + " CHF | ";
 }
