@@ -36,7 +36,7 @@ class Product {
         return sprintf("%d) %s %d %s", $this->id, $this->name, $this->price, $this->description, $this->categoryID);
     }
 
-    static public function getProducts($orderBy="id") {
+    static public function getProducts($orderBy="categoryID") {
         $orderByStr = '';
         if (in_array($orderBy, ['id', 'name', 'price', 'description', 'img', 'categoryID']) ) {
             $orderByStr = " ORDER BY $orderBy";

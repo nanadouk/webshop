@@ -50,7 +50,7 @@
     </p>
 
     <input type="hidden" name="product[id]" value="<?php echo $product['id'] ?>" />
-    <input type="hidden" name="product[size]" value="<?php echo $product['size'] ?>" />
+    <input type="hidden" name="product[option]" value="<?php echo $product['option'] ?>" />
     <input type="hidden" name="product[quantity]" value="<?php echo $product['quantity'] ?>" />
 
 

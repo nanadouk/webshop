@@ -71,8 +71,8 @@
     }
 
     function send_email(){
-        if (isset($_POST['info'])) {
-            $client = $_POST['info'];
+        if (isset($_POST['client'])) {
+            $client = $_POST['client'];
         }
         require('PHPMailer/vendor/autoload.php');
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -95,18 +95,18 @@
                 )
             );*/
 
-            //Recipients
+
             $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
+            //Recipients
             $mail->addAddress($client['email']);     // Add a recipient
             $mail->addAddress('anna.doukmak@students.bfh.ch');
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Order confirmation';
-            $mail->Body    = '<p>Dear '.$client['titel'].'. '.$client['lname'].'</p>
+            $mail->Body    = '<p>Dear '.$client['title'].'. '.$client['lname'].'</p>
                                 <p>Thank you for your order!</p>';
-            $mail->AltBody = 'Dear '.$client['titel'].'. '.$client['lname'].'. Thank you for your order!';
-
+            $mail->AltBody = 'Dear '.$client['title'].'. '.$client['lname'].'. Thank you for your order!';
             $mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {

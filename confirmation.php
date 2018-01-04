@@ -21,10 +21,10 @@
     <?php
         $item = Product::getProductById($product['id']);
         echo "<p>".$item->getName()."</p>";
-        echo "<p>Size: ".$product['size']."</p>";
+        echo "<p>Option: ".$product['option']."</p>";
         echo "<p>Delivery address: ".$client['street'].", ".$client['city']."</p>";
         echo "<p>Your tel.: ".$client['tel']."</p>";
-    //send_email();
+        send_email();
     ?>
 </div>
 

@@ -14,7 +14,7 @@
             foreach ($options as $option) {
                 $supp = $option->getSupplementary();
                 $name = $option->getName();
-                echo "<input type='radio' onclick='javascript:changeRadio($supp, $id)' name='product[size]' 
+                echo "<input type='radio' onclick='javascript:changeRadio($supp, $id)' name='product[option]' 
                     value='$name' required ";
                 if ($supp == 0) echo "checked='checked' />$name<br/>";
                 else echo "/>$name (+$supp CHF)<br/>";
@@ -24,7 +24,7 @@
         if ($categotyID == 2) {
             $options = Option::getOptionsByCategory($categotyID);
             echo "<div class='item-options'><p><label>Dressing:</label></p>";
-            echo "<select name=product[dressing] required>";
+            echo "<select name=product[option] required>";
             foreach ($options as $option) {
                 $name = $option->getName();
                 echo "<option value='$name'>$name</option>";
