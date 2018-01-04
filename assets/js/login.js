@@ -9,10 +9,8 @@ $(function () {
             data: "login="+login+"&pw="+pw,
             success: function(html){
                 if(html !=='false')    {
-                    $("#loggedin").css("display", "block", "important");
-                    $("#loggedin").append("<p>Logged in as "+html+"</p>");
-                   // document.getElementById("loggedin-user").innerHTML="Logged in as "+html;
-                    $("#login-form").css("display", "none");
+                    $('#after_login').css("display", "inline-block", "important");
+                    $('#before_login').css("display", "none", "important");
                 }
                 else    {
                     $("#add_err").css('display', 'inline', 'important');

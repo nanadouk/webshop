@@ -57,6 +57,30 @@ h1{
 	height: auto;
 }
 
+#after_login{
+	display: none;
+}
+
+#before_login{
+	display: inline-block;
+	width: 100%;
+}
+
+#after_login p, #before_login p{
+	float: right;
+	color: grey;
+	font-size: 16px;
+}
+
+#after_login a, #before_login a{
+	color: grey;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+#after_login a:hover, #before_login a:hover{
+	color: #ff6b4a;
+}
 /*********************LANGUAGES*****************/
 #lang ul {
 	list-style-type: none;
@@ -290,7 +314,3 @@ fieldset{
 	height: auto;
 }
 
-
-#loggedin{
-	/*display: none;*/
-}

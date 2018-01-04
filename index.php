@@ -1,5 +1,6 @@
 <?php
-    require_once("autoloader.php");
+
+require_once("autoloader.php");
     require("functions.php");
 ?>
 <!doctype html>
