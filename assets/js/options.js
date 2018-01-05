@@ -4,11 +4,13 @@ $(function () {
             $(this).parent().find(".item-options-wrapper").slideUp('slow');
             $(this).removeClass("current");
             $(this).css("background-color", '');
+            $(this).find("a").css("opacity", '');
 
         } else {
             $('article .current').css("background-color", '');
             $('article .current').parent().find('.item-options-wrapper').slideUp('slow',function() {
                 $(this).parent().find('.item-upper-wrapper').removeClass('current');
+                $(this).parent().find("a").css("opacity", '');
             });
 
             id = $(this).parent().find("input[name='product[id]']").val();
@@ -22,6 +24,7 @@ $(function () {
                     $(this).parent().find(".item-options-wrapper").slideDown('slow');
                     $(this).css("background-color", "rgba(143, 200, 96, 0.2)");
                     $(this).addClass("current");
+                    $(this).find("a").css("opacity", "0.5");
                 }
             });
         }

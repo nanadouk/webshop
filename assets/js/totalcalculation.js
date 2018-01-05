@@ -36,3 +36,15 @@ function changeTotal(id) {
     total = quantity * parseFloat(price);
     document.getElementById("total"+id).firstChild.innerHTML=total.toFixed(2).replace(".", ",") + " CHF | ";
 }
+
+function deleteAll(item, option, num) {
+   $.ajax({
+        type: "POST",
+        url: document.URL,
+        data:"action=delete&item=" + item + "&option=" + option + "&num=" + num,
+        success:function(html) {
+            alert(html);
+        }
+
+    });
+}

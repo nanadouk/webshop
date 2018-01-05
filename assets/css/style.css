@@ -109,7 +109,6 @@ h1{
 	border-left: none;
 }
 /*****************************************/
-aside {background-color: #8fc860;}
 
 #footer {
 	background-color: #ff6b4a;
@@ -205,22 +204,7 @@ button.button-price {
 .item-options{
 	padding: 20px;
 }
-/*
-.item-options::before{
-	bottom: 170px;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	position: absolute;
-	pointer-events: none;
-	border-color: hsla(0,0%,100%,0);
-	border-bottom-color: #fff;
-	border-width: 30px;
-	margin-left: -20px;
-	height: 150px;
-	width: 0;
-}
-*/
+
 .options-icon{
 	float: right;
 	cursor: pointer;
@@ -321,3 +305,119 @@ fieldset{
 	height: auto;
 }
 
+/****************SHOPPING CART*******************/
+#shoppingcart {
+	border: 2px solid #8fc860;
+	border-radius: 10px;
+}
+
+#shoppingcart h4{
+	margin: 0;
+}
+
+#heading {
+	padding: 15px 0;
+	background-color: #8fc860;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.cart table{
+	width: 100%;
+}
+
+.cart td{
+	vertical-align: top;
+}
+
+.cart .option{
+	color: gray;
+}
+
+.cart tr td:first-child{
+	width:1%;
+	white-space:nowrap;
+}
+
+.cart td{
+	padding-bottom: 15px;
+}
+
+.cart tr td:nth-child(4) {
+	text-align: right;
+}
+
+.cart{
+	overflow-x:auto;
+	padding: 10px;
+	font-size: 14px;
+
+}
+
+.cart .delete{
+	color: #8fc860;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.cart .delete:hover{
+	color: #6dab3b;
+}
+
+.cart .item{
+	width:1%;
+	white-space:nowrap;
+}
+
+table.total{
+	color: gray;
+	border-top: 1px solid lightgrey;
+	width: 100%;
+
+}
+
+table.total tr:first-child td{
+	padding-top: 10px;
+}
+
+.total td{
+	padding-bottom: 5px;
+}
+
+.total tr td:last-child{
+	width:1%;
+	white-space:nowrap;
+	text-align: right;
+}
+
+.total tr:last-child td{
+	color: #2c2c2c;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+button.order {
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 30px 0 0 0;
+	width: 100%;
+}
+
+.edit-add:before{
+	content: '+';
+	border: 1px solid lightgrey;
+	padding: 2px 5px;
+	margin-left: 5px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+}
+
+.edit-delete:before{
+	content: '-';
+	border: 1px solid lightgrey;
+	padding: 2px 6px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+}

@@ -33,7 +33,7 @@ class Product {
     }
 
     public function __toString(){
-        return sprintf("%d) %s %d %s", $this->id, $this->name, $this->price, $this->description, $this->categoryID);
+        return sprintf("%d, %s, %d", $this->id, $this->name, $this->price, $this->description);
     }
 
     static public function getProducts($orderBy="categoryID") {

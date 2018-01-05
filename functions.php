@@ -48,7 +48,8 @@
         echo "<h1>".t($pageId)."</h1>";
         $products = Product::getProducts();
         foreach ($products as $product) {
-            echo "<form class='item-wrapper' action=".get_url($language, "Clientform")." method='post'>";
+         //   echo "<form class='item-wrapper' action=".get_url($language, "Clientform")." method='post'>";
+            echo "<form class='item-wrapper' action='' method='post'>";
             echo "<div class='item-upper-wrapper' onclick=\"javascript:initPrice(".$product->getPrice().")\">";
             echo "<img class='item-img' src=\"".$product->getImg()."\" />";
             echo "<div class='item-description-wrapper'>";

@@ -2,8 +2,8 @@
 
 class Option{
     private $optionvalueID;
-    private $optionvalueName;
     private $optionID;
+    private $optionvalueName;
     private $supplementary;
 
     public function getId() {
@@ -23,8 +23,7 @@ class Option{
     }
 
     public function __toString(){
-        return sprintf("%d) %s %d %d", $this->optionvalueID, $this->optionvalueName,
-            $this->optionID, $this->supplementary);
+        return sprintf("%d, %s, %d", $this->optionvalueID, $this->optionvalueName, $this->supplementary);
     }
 
     static public function getOptionsByCategory($categoryID, $orderBy="optionvalueID") {
@@ -40,5 +39,16 @@ class Option{
             }
         }
         return $options;
+    }
+
+    static public function getOptionById($id) {
+        $id = (int) $id;
+        $res = DB::doQuery("SELECT * FROM optionvalue WHERE optionvalueID = $id");
+        if ($res) {
+            if ($option = $res->fetch_object(get_class())) {
+                return $option;
+            }
+        }
+        return null;
     }
 }
