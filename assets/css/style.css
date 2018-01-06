@@ -56,31 +56,53 @@ h1{
 	max-width: 100%;
 	height: auto;
 }
-/*
-#after_login{
-	/*display: none;
-}
 
-#before_login{
+#login-info{
 	display: inline-block;
 	width: 100%;
 }
 
-#after_login p, #before_login p{
-	float: right;
+#login-info p, #logout-form{
 	color: grey;
 	font-size: 16px;
 }
 
-#after_login a, #before_login a{
+#login-info a{
 	color: grey;
 	text-decoration: none;
 	font-size: 16px;
+	cursor: pointer;
 }
 
-#after_login a:hover, #before_login a:hover{
+#login-info a:hover{
 	color: #ff6b4a;
-}*/
+}
+
+#login-info input{
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 2px 4px;
+	outline: 0;
+}
+
+#login-info button{
+	border-radius: 3px;
+	padding: 3px 7px;
+	color: #ffffff;
+	background-color: #ff6b4a;
+	cursor: pointer;
+	border: 0 none;
+}
+
+#login-info button:hover{
+	background-color: #ff441a;
+}
+
+#login-info form, #logout-form{
+	text-align: right;
+	margin-top: 20px;
+}
+
 /*********************LANGUAGES*****************/
 #lang ul {
 	list-style-type: none;

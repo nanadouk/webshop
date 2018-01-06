@@ -8,10 +8,12 @@
             <!--<img src="assets/img/order_button.png" alt="order button" />-->
         <div id="lang">
             <ul>
-                <?php languages($language, $pageId);?>
+                <?php
+                    languages($language, $pageId);
+                ?>
             </ul>
         </div>
-        <div>
+        <div id="login-info">
             <?php
                 login_info();
             ?>

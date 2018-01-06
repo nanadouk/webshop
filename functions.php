@@ -73,10 +73,16 @@
     function login_info(){
         if (isset($_SESSION["user"])) {
             $logged_user = $_SESSION["user"];
-            echo "<p><span>Logged in as, $logged_user!</span>
-                        <a >Logout</a></p>";
+            echo "<div id='logout-form'><span>Logged in as $logged_user </span>
+                        <button type='submit' id='login-button'><i class='fa fa-sign-out' aria-hidden='true'></i></button></div>";
         } else {
-            echo "<p><a>Login</a></p>";
+            echo "<form action='' method='post' >
+                    <input name='login' id='login' placeholder='username...'>
+                    <input type='password' name='pw' id='pw' placeholder='password...'>
+                    <button type='submit' id='login-button'><i class='fa fa-sign-in' aria-hidden='true'></i></button>
+                  </form>";
+
+           // "<p><a id='login-link'>Login</a></p>";
         }
     }
 
