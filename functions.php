@@ -44,11 +44,10 @@
         }
     }
 
-    function products($language, $pageId){
+    function products($pageId){
         echo "<h1>".t($pageId)."</h1>";
         $products = Product::getProducts();
         foreach ($products as $product) {
-         //   echo "<form class='item-wrapper' action=".get_url($language, "Clientform")." method='post'>";
             echo "<form class='item-wrapper' action='' method='post'>";
             echo "<div class='item-upper-wrapper' onclick=\"javascript:initPrice(".$product->getPrice().")\">";
             echo "<img class='item-img' src=\"".$product->getImg()."\" />";
@@ -71,10 +70,18 @@
         return add_param($url, "page", $pageId);
     }
 
-    function send_email(){
-        if (isset($_POST['client'])) {
-            $client = $_POST['client'];
+    function login_info(){
+        if (isset($_SESSION["user"])) {
+            $logged_user = $_SESSION["user"];
+            echo "<p><span>Logged in as, $logged_user!</span>
+                        <a >Logout</a></p>";
+        } else {
+            echo "<p><a>Login</a></p>";
         }
+    }
+
+    function send_email($name, $address){
+
         require('PHPMailer/vendor/autoload.php');
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
@@ -99,15 +106,14 @@
 
             $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
             //Recipients
-            $mail->addAddress($client['email']);     // Add a recipient
+            $mail->addAddress($address);     // Add a recipient
             $mail->addAddress('anna.doukmak@students.bfh.ch');
 
             //Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Order confirmation';
-            $mail->Body    = '<p>Dear '.$client['title'].'. '.$client['lname'].'</p>
-                                <p>Thank you for your order!</p>';
-            $mail->AltBody = 'Dear '.$client['title'].'. '.$client['lname'].'. Thank you for your order!';
+            $mail->Body    = '<p>Dear '.$name.'</p><p>Thank you for your order!</p>';
+            $mail->AltBody = 'Dear '.$name.', Thank you for your order!';
             $mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {

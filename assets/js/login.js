@@ -1,5 +1,5 @@
 $(function () {
-    $("#add_err").css('display', 'none', 'important');
+    /*$("#add_err").css('display', 'none', 'important');
     $("#login-button").click(function(){
         login=$("#login").val();
         pw=$("#pw").val();
@@ -8,7 +8,7 @@ $(function () {
             url: "authentication.inc.php",
             data: "login="+login+"&pw="+pw,
             success: function(html){
-                if(html !=='false')    {
+               /* if(html !=='false')    {
                     $('#after_login').css("display", "inline-block", "important");
                     $('#before_login').css("display", "none", "important");
                 }
@@ -19,5 +19,5 @@ $(function () {
             }
         });
         return false;
-    });
+    });*/
 });

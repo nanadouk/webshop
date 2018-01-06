@@ -11,13 +11,10 @@
 
     if (isset($_POST["product"])) {
         $item = $_POST["product"];
-
-        /*if ( array_key_exists ( 'option' , $tmp )){
-            $item['option'] = $tmp['option'];
-        }*/
         $cart->addItem($item['id'], $item['option'], $item['quantity']);
     }
 
+    // Todo
     if (isset($_POST['delete']) && isset($_POST['item']) && isset($_POST['option']) && isset($_POST['num'])){
         $cart->removeItem($_POST['item'], $_POST['option'], $_POST['num']);
     }
@@ -26,7 +23,6 @@
         echo "<div class=\"cart empty\">[Empty Cart]</div>";
     } else {
         echo "<div class=\"cart\"><table>";
-       // echo "<tr><th>Article</th><th>#</th><th>Price</th><th>Total</th></tr>";
         $total = 0;
         foreach ($cart->getItems() as $item => $value) {
             $product = Product::getProductById($item);

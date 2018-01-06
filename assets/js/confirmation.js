@@ -1,5 +1,5 @@
 $(function(){
-    $("#dialog-confirm").dialog({
+ /*   $("#dialog-confirm").dialog({
         resizable: false,
         height: "auto",
         width: 400,
@@ -14,5 +14,5 @@ $(function(){
                 $( this ).dialog( "close" );
             }
         }
-    });
+    });*/
 });

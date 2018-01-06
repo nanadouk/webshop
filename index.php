@@ -1,9 +1,10 @@
 <?php
 
     require("autoloader.php");
-session_start();
+   // session_start();
+    include("authentication.inc.php");
 
-if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
+    if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
         die("Unable to connect to database [".DB::getInstance()->connect_error."]");
     }
     require("functions.php");
@@ -23,7 +24,7 @@ if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
 
         <script src="assets/js/confirmation.js"></script>
         <script src="assets/js/login.js"></script>
-        <script src="assets/js/options.js"></script>
+        <script src="assets/js/jquery.js"></script>
         <script src="assets/js/totalcalculation.js"></script>
 
         <title>Webshop | <?php echo $pageId?> </title>

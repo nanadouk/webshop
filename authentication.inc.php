@@ -6,6 +6,6 @@
         $login = $_POST["login"];
         if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
             $_SESSION["user"] = $login;
-            echo ucfirst($_SESSION["user"]);
-        } else echo 'false';
+         //   echo ucfirst($_SESSION["user"]);
+        }// else echo 'false';
     }

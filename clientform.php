@@ -1,8 +1,3 @@
-<?php
-    if( isset($_POST['product']) ) {
-        $product = $_POST['product'];
-    } // todo else
-?>
 <form action="<?php echo get_url($language, "Confirmation")?>" method="post">
 
     <h3>Personal data</h3>
@@ -44,13 +39,9 @@
         <textarea name="client[comment]" rows="5" cols="30" maxlength="150"></textarea>
     </p>
 
-    <input type="hidden" name="product[id]" value="<?php echo $product['id'] ?>" />
-    <input type="hidden" name="product[option]" value="<?php echo $product['option'] ?>" />
-    <input type="hidden" name="product[quantity]" value="<?php echo $product['quantity'] ?>" />
-
-
     <p>
-        <button type='submit' name="action" class="button-price next"><span>Next  <i class="fa fa-angle-right" aria-hidden="true"></i>
-</span></button>
+        <button type='submit' name="action" class="button-price next">
+            <span>Next  <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+        </button>
     </p>
 </form>

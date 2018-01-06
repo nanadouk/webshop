@@ -31,4 +31,33 @@ $(function () {
         return false;
     });
 
+    if (window.location.href.indexOf("Confirmation") > -1){
+        $('a.order').hide();
+    } else {
+        $('a.order').show();
+    }
+
+    $("a.confirm").click(function () {
+        $( "#dialog-confirm" ).dialog( "open" );
+    });
+
+    $("#dialog-confirm").dialog({
+        autoOpen: false,
+        resizable: true,
+        height: "auto",
+        width: "auto",
+        modal: true,
+        buttons: {
+            "Confirm": function() {
+                $("#message-confirm").css("display", "block");
+                $('#order-info').hide();
+                $( this ).dialog( "close" );
+            },
+            Cancel: function() {
+                window.location.replace("index.php");
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+
 });
