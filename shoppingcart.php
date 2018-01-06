@@ -47,12 +47,11 @@
         }
         echo "</table><table class='total'><tr><td>Sub-total</td><td>".number_format($total, 2)." CHF</td></tr>
             <tr><td>Delivery costs</td><td>FREE</td></tr>
-            <tr><td>Total</td><td>".number_format($total, 2)." CHF</td></tr>
-            </table><button type='submit' class='button-price order'>Order</button></div>";
+            <tr><td>Total</td><td>".number_format($total, 2)." CHF</td></tr></table>
+            <a href=".get_url($language, "Clientform")." class='button-price order'>Order</a>
+            </div>";
 
     }
-
-
 
 ?>
 </div>

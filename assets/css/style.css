@@ -309,6 +309,8 @@ fieldset{
 #shoppingcart {
 	border: 2px solid #8fc860;
 	border-radius: 10px;
+	width: 100%;
+
 }
 
 #shoppingcart h4{
@@ -320,10 +322,6 @@ fieldset{
 	background-color: #8fc860;
 	text-align: center;
 	color: #FFFFFF;
-}
-
-.cart table{
-	width: 100%;
 }
 
 .cart td{
@@ -396,11 +394,11 @@ table.total tr:first-child td{
 	font-size: 18px;
 }
 
-button.order {
+a.order {
 	text-transform: uppercase;
 	font-weight: bold;
 	margin: 30px 0 0 0;
-	width: 100%;
+	width: 83%;
 }
 
 .edit-add:before{
@@ -420,4 +418,9 @@ button.order {
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	cursor: pointer;
+}
+
+.next{
+	border:0 none;
+	cursor:pointer;
 }
