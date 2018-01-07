@@ -20,7 +20,7 @@ h1{
 }
 /*******************TOP-MENU************************/
 
-#top-menu{
+#top-menu .firstpage{
 	margin-left: 30%;
 }
 
@@ -38,7 +38,7 @@ h1{
 	padding: 0 20px;
 }
 
-#top-menu ul li:first-child{
+#top-menu ul.firstpage li:first-child{
 	padding-left: 0;
 }
 
@@ -62,8 +62,9 @@ h1{
 /******************HEADER************************/
 #logo img{
 	float: left;
-	max-width: 100%;
+	width: 100%;
 	height: auto;
+	max-width: 440px;
 }
 
 #login-info{
@@ -282,17 +283,17 @@ fieldset{
 }
 
 /*********************SLIDER*********************/
-#slider-info {
+.slider-info {
 	float: left;
 	width: 30%;
 }
 
-#contact-info {
+.contact-info {
 	text-align: center;
-	padding: 40px 10px 30px 50px;
+	padding: 10% 10px 2% 50px;
 }
 
-#contact-info .fa {
+.contact-info .fa {
 	width: 22px;
 	height: 22px;
 	border: 1px solid #000;
@@ -301,7 +302,7 @@ fieldset{
 	line-height: 24px;
 }
 
-#slider-info-2{
+.slider-info-2{
 	background-color: #ff6b4a;
 	position: absolute;
 	bottom: 0;
@@ -309,11 +310,11 @@ fieldset{
 	width: 30%;
 	text-align: center;
 	font-size: 22px;
-	padding: 70px 13px 70px 13px;
+	padding: 4% 13px 3% 13px;
 	margin-bottom: 4px;
 }
 
-#slider-info-2::before {
+.slider-info-2::before {
 	content: '';
 	border: 13px solid transparent;
 	border-bottom-color: #d94c2d;
@@ -324,33 +325,36 @@ fieldset{
 	z-index: 10;
 }
 
-#slider-info-titel{
+.slider-info-titel{
 	text-transform: uppercase;
 }
 
-#slider-img {
+.slider-img {
 	float: right;
 	width: 70%;
 }
 
-#slider-img img {
+.slider-img img {
 	width: 100%;
 	height: auto;
 }
 
 /****************SHOPPING CART*******************/
-#shoppingcart {
+#shoppingcart{
+	padding: 20px;
+}
+
+.cart-wrapper {
 	border: 2px solid #8fc860;
 	border-radius: 5px;
-	width: 100%;
-
+	max-width: 320px;
 }
 
 #shoppingcart h4{
 	margin: 0;
 }
 
-#heading {
+.heading {
 	padding: 15px 0;
 	background-color: #8fc860;
 	text-align: center;

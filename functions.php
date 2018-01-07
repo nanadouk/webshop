@@ -20,12 +20,15 @@
         $urlBase = $_SERVER["PHP_SELF"];
         add_param( $urlBase, "lang", $language);
         $menuItems = array("Home", "About", "Menu", "Contact");
+        $class = $pageId == "Home" ? " firstpage" : "";
+        echo "<ul class='$class'>";
         foreach ($menuItems as $item){
             $url = $urlBase;
             add_param( $url, "page", $item);
             $class = $pageId == $item ? "active" : "inactive";
             echo "<li><a class=\"$class\" href=\"$url\">".t($item)."</a></li>";
         }
+        echo "</ul>";
     }
 
     function content($pageId) {

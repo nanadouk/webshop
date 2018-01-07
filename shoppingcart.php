@@ -1,7 +1,8 @@
 <div id="shoppingcart">
-    <div id="heading">
-        <h4>Your Shopping Cart</h4>
-    </div>
+    <div class="cart-wrapper">
+        <div class="heading">
+            <h4>Your Shopping Cart</h4>
+        </div>
 <?php
 
     if (!isset($_SESSION["cart"])) {
@@ -50,4 +51,5 @@
     }
 
 ?>
+    </div>
 </div>
