@@ -60,4 +60,13 @@ $(function () {
         }
     });
 
+    $("#logout-form button").click(function () {
+        $.ajax({
+            url: "logout.php",
+            success: function (html) {
+                window.location.replace(window.location.href);
+            }
+        });
+    });
+
 });

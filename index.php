@@ -1,13 +1,9 @@
 <?php
 
     require("autoloader.php");
-   // session_start();
-    include("authentication.inc.php");
-
-    if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
-        die("Unable to connect to database [".DB::getInstance()->connect_error."]");
-    }
     require("functions.php");
+
+
 ?>
 <!doctype html>
 <html lang="de-CH">

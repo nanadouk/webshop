@@ -10,5 +10,5 @@
             <p>The original Italian Pizza</p>
         </div>
     </div>
-    <div id="slider-img"><img src="assets/img/pizza.jpg" alt="pizza" /></div>
+    <div id="slider-img"><img src="assets/img/slide2.jpg" alt="pizza" /></div>
 </div>

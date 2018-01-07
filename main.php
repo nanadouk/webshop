@@ -8,9 +8,7 @@
     </section>
     <aside class="column col-3">
         <?php
-           // include("login.php");
             include ("shoppingcart.php");
-
         ?>
     </aside>
 </main>

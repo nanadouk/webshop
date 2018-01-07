@@ -1,3 +1,3 @@
 <?php
-    content($pageId);
+    echo "<p>".t("content".$pageId)."</p>";
 ?>

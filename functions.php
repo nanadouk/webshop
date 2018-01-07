@@ -80,9 +80,7 @@
                     <input name='login' id='login' placeholder='username...'>
                     <input type='password' name='pw' id='pw' placeholder='password...'>
                     <button type='submit' id='login-button'><i class='fa fa-sign-in' aria-hidden='true'></i></button>
-                  </form>";
-
-           // "<p><a id='login-link'>Login</a></p>";
+                    </form>";
         }
     }
 
@@ -191,27 +189,20 @@
         }
     }
 
-    function authentication(){
-        session_start();
-        $users = ["bob"=>"123","alice"=>"456","eve"=>"789"];
-        if(isset($_POST["login"])) {
-            $login = $_POST["login"];
-            if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
-                $_SESSION["user"] = $login;
-            }
-        }
-        if (!isset($_SESSION["user"])) {
-            echo "<!DOCTYPE html>\n";
-            echo "<html><head>/*...*/</head><body>";
-            echo "<h3>Access Denied!</h3><p>Please login first.</p>";
-            echo "<p>&raquo; <a href=\"login.php\">Login</a></p>";
-            echo "</body></html>";
-            exit;
+    session_start();
+    $users = ["bob"=>"123","alice"=>"456","eve"=>"789"];
+    if(isset($_POST["login"])) {
+        $login = $_POST["login"];
+        if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
+            $_SESSION["user"] = $login;
         }
     }
-
+    if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
+        die("Unable to connect to database [".DB::getInstance()->connect_error."]");
+    }
     $language = get_param("lang", "en");
     $pageId = get_param("page", "Home");
     $time = time() + 60*60*24*30;
     setcookie("lang", $language, $time);
+
 

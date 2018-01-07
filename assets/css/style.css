@@ -2,7 +2,8 @@ body {
 	font-family: Trebuchet MS, Tahoma,sans-serif;
 	font-size: 18px;
 	color: #2c2c2c;
-	background: url("../img/bg.jpg") repeat;
+	/*background: url("../img/bg3.jpg") repeat;*/
+	background-color: #f2eeed;
 }
 
 #page {
@@ -19,6 +20,10 @@ h1{
 }
 /*******************TOP-MENU************************/
 
+#top-menu{
+	margin-left: 30%;
+}
+
 #top-menu ul {
     list-style-type: none;
     margin: 0;
@@ -31,6 +36,10 @@ h1{
 #top-menu li {
     float: left;
 	padding: 0 20px;
+}
+
+#top-menu ul li:first-child{
+	padding-left: 0;
 }
 
 #top-menu a {
@@ -79,7 +88,7 @@ h1{
 }
 
 #login-info input{
-	border: 1px solid #ccc;
+	border: 1px solid lightgrey;
 	border-radius: 3px;
 	padding: 2px 4px;
 	outline: 0;
@@ -280,7 +289,7 @@ fieldset{
 
 #contact-info {
 	text-align: center;
-	padding: 30px 20px;
+	padding: 40px 10px 30px 50px;
 }
 
 #contact-info .fa {
@@ -300,6 +309,8 @@ fieldset{
 	width: 30%;
 	text-align: center;
 	font-size: 22px;
+	padding: 70px 13px 70px 13px;
+	margin-bottom: 4px;
 }
 
 #slider-info-2::before {
