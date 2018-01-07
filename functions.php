@@ -59,7 +59,7 @@
             echo "<p class='item-title'>".$product->getName()."</p>";
             echo "<p class='item-description'>".$product->getDescription()."</p></div>";
             echo "<div class='item-btn-wrapper'><a class='button-price'>"
-                . number_format($product->getPrice(), 2, ",", ".") . " CHF | 
+                . number_format($product->getPrice(), 2) . " CHF | 
                         <i class='fa fa-angle-down' aria-hidden='true'></i></a></div>";
             echo "</div><div class='item-options-wrapper'></div>";
             echo "<input type='hidden' name='product[id]' value=".$product->getId()." />";
@@ -87,8 +87,44 @@
         }
     }
 
-    function send_email($name, $address){
+    function render_cart(&$cart, $language){
+        if ($cart->isEmpty()) {
+            echo "<div class=\"cart empty\">[Empty Cart]</div>";
+        } else {
+            echo "<div class=\"cart\"><table>";
+            $total = 0;
+            foreach ($cart->getItems() as $item => $value) {
+                $product = Product::getProductById($item);
+                if ($product == null) continue;
+                $productId = $product->getId();
+                $price = $product->getPrice();
+                foreach ($value as $option => $num) {
+                    $option = Option::getOptionById($option);
+                    if ($option == null) continue;
+                    $optionId = $option->getId();
+                    $supplementary = $option->getSupplementary();
+                    $tmpprice = $price + $supplementary;
+                    $total += $tmpprice * $num;
+                    echo "<tr id='item{$product->getId()}{$option->getId()}'><td class='number'>$num x </td>
+                        <td class='item'>{$product->getName()}<br/>
+                        <span class='option'>{$option->getName()}</span></td>
+                        <td><span class='edit-delete' onclick='javascript:removeItem($productId, $optionId, $tmpprice)'></span>
+                        <span class='edit-add' onclick='javascript:addItem($productId, $optionId, $tmpprice)'></span></td>
+                        <td>".number_format($tmpprice*$num, 2)." CHF</td><td><span class='delete' 
+                        onclick='javascript:removeAll($productId, $optionId, $num, $tmpprice)'>
+                        <i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></td></tr>";
+                }
+            }
+            echo "</table><table class='total'><tr><td>Sub-total</td><td id='sub-amount'>".number_format($total, 2)." CHF</td></tr>
+            <tr><td>Delivery costs</td><td>FREE</td></tr>
+            <tr><td>Total</td><td id='amount'>".number_format($total, 2)." CHF</td></tr></table>
+            <a href=".get_url($language, "Clientform")." class='button-price order'>Order</a>
+            </div>";
 
+        }
+    }
+
+    function send_email($name, $address){
         require('PHPMailer/vendor/autoload.php');
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {
@@ -192,19 +228,15 @@
         }
     }
 
-    session_start();
-    $users = ["bob"=>"123","alice"=>"456","eve"=>"789"];
-    if(isset($_POST["login"])) {
-        $login = $_POST["login"];
-        if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
-            $_SESSION["user"] = $login;
-        }
-    }
+    include "authentication.inc.php";
+
     if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
         die("Unable to connect to database [".DB::getInstance()->connect_error."]");
     }
+
     $language = get_param("lang", "en");
     $pageId = get_param("page", "Home");
+
     $time = time() + 60*60*24*30;
     setcookie("lang", $language, $time);
 

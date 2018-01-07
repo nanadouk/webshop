@@ -13,14 +13,14 @@ function minusOne(id){
     if (quantity > 1) {
         quantity--;
         document.getElementById("quantity"+id).value = quantity;
-        changeTotal(id);
+        changeTotalBtn(id);
     }
 }
 
 function plusOne(id) {
     quantity++;
     document.getElementById("quantity" + id).value = quantity;
-    changeTotal(id);
+    changeTotalBtn(id);
 }
 
 function changeRadio(change, id) {
@@ -29,22 +29,63 @@ function changeRadio(change, id) {
     } else {
         price = init + change;
     }
-    changeTotal(id);
+    changeTotalBtn(id);
 }
 
-function changeTotal(id) {
+function changeTotalBtn(id) {
     total = quantity * parseFloat(price);
-    document.getElementById("total"+id).firstChild.innerHTML=total.toFixed(2).replace(".", ",") + " CHF | ";
+    document.getElementById("total"+id).firstChild.innerHTML=total.toFixed(2) + " CHF | ";
 }
 
-function deleteAll(item, option, num) {
-   $.ajax({
-        type: "POST",
-        url: document.URL,
-        data:"action=delete&item=" + item + "&option=" + option + "&num=" + num,
+function removeAll(item, option, num, price) {
+   $.post({
+        url: window.location.href,
+        data:"action=removeAll&item=" + item + "&option=" + option + "&num=" + num,
         success:function(html) {
-            alert(html);
+            document.getElementById("item"+item+option).outerHTML= '';
+            changeTotalDOM(num*price);
         }
-
     });
+}
+
+function removeItem(item, option, price){
+    $.post({
+        url: window.location.href,
+        data:"action=remove&item=" + item + "&option=" + option,
+        success:function(html) {
+            element = document.getElementById("item"+item+option);
+            num = parseInt(element.firstChild.innerHTML.split(' '));
+            if (num == 1) {
+                element.outerHTML= '';
+            } else {
+                element.firstChild.innerHTML = (num-1)+ " x ";
+                tmpprice =  parseFloat(element.querySelector("td:nth-child(4)").innerHTML.split(' '));
+                element.querySelector("td:nth-child(4)").innerHTML = (tmpprice-price).toFixed(2)+ " CHF";
+            }
+            changeTotalDOM(price);
+        }
+    });
+}
+
+function addItem(item, option, price){
+    $.post({
+        url: window.location.href,
+        data:"action=add&item=" + item + "&option=" + option,
+        success:function(html) {
+            element = document.getElementById("item"+item+option);
+            element.firstChild.innerHTML = (num+1)+ " x ";
+            tmpprice =  parseFloat(element.querySelector("td:nth-child(4)").innerHTML.split(' '));
+            element.querySelector("td:nth-child(4)").innerHTML = (tmpprice+price).toFixed(2)+ " CHF";
+            amount = parseFloat(document.getElementById("sub-amount").innerHTML.split(' '));
+            document.getElementById("sub-amount").innerHTML = (amount+price).toFixed(2) + " CHF";
+            document.getElementById("amount").innerHTML = (amount+price).toFixed(2)+ " CHF";
+        }
+    });
+}
+
+function changeTotalDOM(price) {
+    amount = parseFloat(document.getElementById("sub-amount").innerHTML.split(' '));
+    result = amount - price;
+    document.getElementById("sub-amount").innerHTML = result.toFixed(2) + " CHF";
+    document.getElementById("amount").innerHTML = result.toFixed(2) + " CHF";
 }

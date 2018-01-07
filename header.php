@@ -5,7 +5,6 @@
     <div class="column col-4">
     </div>
     <div class="column col-4">
-            <!--<img src="assets/img/order_button.png" alt="order button" />-->
         <div id="lang">
             <ul>
                 <?php
@@ -18,6 +17,5 @@
                 login_info();
             ?>
         </div>
-
     </div>
 </header>

@@ -62,11 +62,29 @@ $(function () {
 
     $("#logout-form button").click(function () {
         $.ajax({
+           // type: "POST",
             url: "logout.php",
+           // data: "action=logout",
             success: function (html) {
                 window.location.replace(window.location.href);
             }
         });
     });
+
+  /*  $('.delete').click(function () {
+        item =
+        $.ajax({
+            url: "shoppingcartprocess.php",
+            data:"action=removeAll&item=" + item + "&option=" + option,
+            context: this,
+            success:function(html) {
+                alert(html);
+                if (html == 'success') {
+                    $(this).closest('tr').remove();
+                }
+            }
+
+        });
+    })*/
 
 });
