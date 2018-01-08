@@ -1,0 +1,43 @@
+.form{
+    width: 30%;
+    float: left;
+}
+
+.list{
+    width: auto;
+    overflow-x:auto;
+}
+
+.list table {
+    border: 1px solid black;
+}
+
+.list table{
+   border-collapse: collapse;
+}
+.list th {
+    height: 40px;
+    background-color: #8fc860;
+    text-align: center;
+}
+
+.list th, td {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.list tr:last-child td{
+    border-bottom: 0;
+}
+
+.list tr td:last-child, th:last-child {
+    display: none;
+}
+
+tr:hover {
+    background-color: rgba(143, 200, 96, 0.5);
+}
+
+.current{
+    background-color: rgba(143, 200, 96, 0.5);
+}

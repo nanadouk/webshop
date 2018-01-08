@@ -229,10 +229,7 @@
     }
 
     include "authentication.inc.php";
-
-    if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
-        die("Unable to connect to database [".DB::getInstance()->connect_error."]");
-    }
+    include "configDB.php";
 
     $language = get_param("lang", "en");
     $pageId = get_param("page", "Home");

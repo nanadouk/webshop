@@ -32,6 +32,30 @@ class Product {
         return $this->categoryID;
     }
 
+    public function setId($id) {
+        $this->id =  $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setDescription($description) {
+        $this->description =  $description;
+    }
+
+    public function setPrice($price) {
+        $this->price = (float) price;
+    }
+
+    public function setImg($imgUrl) {
+        $this->imgUrl =  $imgUrl;
+    }
+
+    public function setCategory($categoryID){
+        $this->categoryID =  $categoryID;
+    }
+
     public function __toString(){
         return sprintf("%d, %s, %d", $this->id, $this->name, $this->price, $this->description);
     }
@@ -60,5 +84,40 @@ class Product {
             }
         }
         return null;
+    }
+
+    static public function delete($id) {
+        $id = (int) $id;
+        $res = DB::doQuery("DELETE FROM product WHERE id = $id");
+        return $res != null;
+    }
+
+    static public function insert($values) {
+        if ( $stmt = DB::getInstance()->prepare("INSERT INTO product (name, price, description, categoryID, imgUrl) VALUES (?,?,?,?,?);")){
+            if ($stmt->bind_param('sdsis', $values['name'], $values['price'], $values['description'],
+                $values['categoryID'], $values['imgUrl'])) {
+                if ($stmt->execute()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function update($values) {
+        $db = DB::getInstance();
+        $this->name = $db->escape_string($values['name']);
+        $this->description = $db->escape_string($values['description']);
+        $this->price = (float)$values['price'];
+        $this->categoryID = (int)$values['categoryID'];
+        $this->imgUrl = $db->escape_string($values['imgUrl']);
+    }
+
+    public function save(){
+        $sql = sprintf("UPDATE product SET name='%s', price=%d, description='%s',
+            categoryID=%d, imgUrl='%s' WHERE id = %d;",$this->name, $this->price, $this->description,
+            $this->categoryID, $this->imgUrl, $this->id);
+        $res = DB::doQuery($sql);
+        return $res != null;
     }
 }
