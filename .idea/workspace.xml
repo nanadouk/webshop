@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3dad1e37-c68e-4c5a-af77-91d1a875e3db" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/js/login.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/adminpanel.php" afterPath="$PROJECT_DIR$/admin/adminpanel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/jquery.js" afterPath="$PROJECT_DIR$/assets/js/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/myscript.js" afterPath="$PROJECT_DIR$/assets/js/myscript.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/authentication.inc.php" afterPath="$PROJECT_DIR$/functions/authentication.inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/functions.php" afterPath="$PROJECT_DIR$/functions/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lang/de.txt" afterPath="$PROJECT_DIR$/lang/de.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/clientform.php" afterPath="$PROJECT_DIR$/templates/clientform.php" />
-    </list>
+    <list default="true" id="3dad1e37-c68e-4c5a-af77-91d1a875e3db" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -504,16 +493,15 @@
       <workItem from="1515232788091" duration="47167000" />
       <workItem from="1515349665330" duration="32000" />
       <workItem from="1515403177484" duration="34839000" />
-      <workItem from="1515493141535" duration="38275000" />
+      <workItem from="1515493141535" duration="38355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328324000" />
+    <option name="totallyTimeSpent" value="328404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
