@@ -1,7 +1,7 @@
 <?php
     include "adminautoloader.php";
     include "adminauthentication.inc.php";
-    include "../configDB.php";
+    include "../functions/configDB.php";
     include "adminprocess.php";
 
 ?>
@@ -19,11 +19,11 @@
         <h2>Edit product list</h2>
         <div class="form">
             <form action="" method="post">
-                <p><label>Name: </label><input type="text" name="item[name]" maxlength="50" class="namefield" required/></p>
-                <p><label>Description: </label><input type="text" name="item[description]" maxlength="100" class="descfield" required/></p>
+                <p><label>Name: </label><input type="text" name="item[name]" maxlength="50" class="namefield" pattern="([a-zA-Z0-9]+[\s\-]?)*" required/></p>
+                <p><label>Description: </label><input type="text" name="item[description]" maxlength="100" class="descfield" pattern="([a-zA-Z0-9\s\,]+[\s\-]?)*" required/></p>
 
-                <p><label>Price: </label><input type="text" name="item[price]" class="pricefield" required/></p>
-                <p><label>Image url: </label><input type="text" name="item[imgUrl]" maxlength="50" class="imgfield" required/></p>
+                <p><label>Price: </label><input type="text" name="item[price]" class="pricefield" pattern="\d{1,3}(\.\d{0,2})?" required/></p>
+                <p><label>Image url: </label><input type="text" name="item[imgUrl]" maxlength="50" class="imgfield" pattern="[a-zA-Z0-9]+(\/[a-zA-Z0-9]+)*(\/[a-zA-Z0-9]+\.[a-z]{3}){1}" required/></p>
                 <p><label>Category: </label>
                     <select name="item[categoryID]" class="catfield" required>
                         <option value="" selected disabled hidden></option>

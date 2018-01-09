@@ -72,9 +72,7 @@ $(function () {
 
     $("#logout-form button").click(function () {
         $.ajax({
-           // type: "POST",
             url: "functions/logout.php",
-           // data: "action=logout",
             success: function (html) {
                 window.location.replace(window.location.href);
             }

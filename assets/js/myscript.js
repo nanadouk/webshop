@@ -99,4 +99,3 @@ function openMenu(){
             menu.className = "row";
         }
 }
-

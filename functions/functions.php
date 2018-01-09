@@ -79,9 +79,10 @@
             echo "<div id='logout-form'><span>".t("Logged in as")." $logged_user </span>
                         <button type='submit' id='login-button'><i class='fa fa-sign-out' aria-hidden='true'></i></button></div>";
         } else {
-            echo "<form action='' method='post' >
+            echo "<form action='' method='post' id='login-form'>
                     <input name='login' id='login' placeholder='username...'>
                     <input type='password' name='pw' id='pw' placeholder='password...'>
+                    <mark id='login-error'></mark>
                     <button type='submit' id='login-button'><i class='fa fa-sign-in' aria-hidden='true'></i></button>
                     </form>";
         }
@@ -193,7 +194,6 @@
         }
     }
 
-    include "authentication.inc.php";
     include "configDB.php";
 
     $language = get_param("lang", "en");

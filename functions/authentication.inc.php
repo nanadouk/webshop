@@ -1,10 +1,13 @@
 <?php
     session_start();
 
-    $users = ["bob"=>"123","alice"=>"456","eve"=>"789"];
+    $users = simplexml_load_file("config/users.xml");
+
     if(isset($_POST["login"])) {
         $login = $_POST["login"];
-        if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
-            $_SESSION["user"] = $login;
+        foreach ($users->user as $user) {
+            if ($user->username == $login && $user->password == $_POST["pw"]) {
+                $_SESSION["user"] = $login;
+            }
         }
     }
