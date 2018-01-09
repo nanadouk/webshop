@@ -1,8 +1,9 @@
 <div id="shoppingcart">
     <div class="cart-wrapper">
         <div class="heading">
-            <h4>Your Shopping Cart</h4>
+            <h4><?php echo t("Your Shopping Cart") ?></h4>
         </div>
+        <div class='order-details'>
 <?php
 
     if (!isset($_SESSION["cart"])) {
@@ -37,7 +38,12 @@
                 $item = (int)$_POST['item'];
                 $option = (int)$_POST['option'];
                 $cart->addItem($item, $option, 1);
-            }
+                }
+                break;
+            case "send":
+                if (isset($_POST['name']) && isset($_POST['email']))
+                    send_email($_POST['name'], $_POST['email'], $cart->getItems());
+                unset($_SESSION['cart']);
                 break;
         }
     }
@@ -45,5 +51,6 @@
     render_cart($cart, $language);
 
 ?>
+        </div>
     </div>
 </div>

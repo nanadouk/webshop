@@ -1,4 +1,4 @@
 <?php
-    if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
+    if (!DB::create('localhost', 'root', '', 'terraemare')) {
         die("Unable to connect to database [".DB::getInstance()->connect_error."]");
     }

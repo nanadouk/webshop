@@ -16,7 +16,7 @@ $(function () {
             id = $(this).parent().find("input[name='product[id]']").val();
             $.ajax({
                 type: "POST",
-                url: "optionsform.php",
+                url: "functions/optionsform.php",
                 data: "id=" + id,
                 context: this,
                 success: function (html) {
@@ -32,9 +32,9 @@ $(function () {
     });
 
     if (window.location.href.indexOf("Confirmation") > -1){
-        $('a.order').hide();
+        $('.cart-wrapper').hide();
     } else {
-        $('a.order').show();
+        $('.cart-wrapper').show();
     }
 
     $("a.confirm").click(function () {
@@ -45,13 +45,23 @@ $(function () {
         autoOpen: false,
         resizable: true,
         height: "auto",
-        width: "auto",
+        width: "400",
         modal: true,
         buttons: {
             "Confirm": function() {
                 $("#message-confirm").css("display", "block");
                 $('#order-info').hide();
                 $( this ).dialog( "close" );
+                name = $("#clientname").text();
+                email = $("#clientemail").text();
+                $.ajax({
+                    type:'post',
+                    url: window.location.href,
+                    data: "action=send&name="+name+"&email="+email,
+                    succes: function (html) {
+                        alert("ok");
+                    }
+                });
             },
             Cancel: function() {
                 window.location.replace("index.php");
@@ -63,28 +73,12 @@ $(function () {
     $("#logout-form button").click(function () {
         $.ajax({
            // type: "POST",
-            url: "logout.php",
+            url: "functions/logout.php",
            // data: "action=logout",
             success: function (html) {
                 window.location.replace(window.location.href);
             }
         });
     });
-
-  /*  $('.delete').click(function () {
-        item =
-        $.ajax({
-            url: "shoppingcartprocess.php",
-            data:"action=removeAll&item=" + item + "&option=" + option,
-            context: this,
-            success:function(html) {
-                alert(html);
-                if (html == 'success') {
-                    $(this).closest('tr').remove();
-                }
-            }
-
-        });
-    })*/
 
 });

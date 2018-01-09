@@ -1,16 +1,16 @@
 <?php
-    require("autoloader.php");
+    require("../autoloader.php");
+    require("functions.php");
+    include "configDB.php";
+
 
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
-        if (!DB::create('localhost', 'root', 'project!2018)Web', 'terraemare')) {
-            die("Unable to connect to database [".DB::getInstance()->connect_error."]");
-        }
         $product = Product::getProductById($id);
         $categotyID = $product->getCategory();
         if ($categotyID == 1) {
             $options = Option::getOptionsByCategory($categotyID);
-            echo "<div class='item-options'><p><label>Size:</label></p>";
+            echo "<div class='item-options'><p><label>".t("Size", '../').":</label></p>";
             foreach ($options as $option) {
                 $supp = $option->getSupplementary();
                 $name = $option->getName();
@@ -26,7 +26,7 @@
             echo "<div class='item-options'><p><label>Dressing:</label></p>";
             echo "<select name=product[option] required>";
             foreach ($options as $option) {
-                echo "<option value='{$option->getId()}'>{$option->getName()}</option>";
+                echo "<option value='{$option->getId()}'>".t($option->getName(), '../')."</option>";
             }
             echo "</select>";
         }

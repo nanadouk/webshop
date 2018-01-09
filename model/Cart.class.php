@@ -32,7 +32,6 @@ class Cart {
             echo "<div class=\"cart empty\">[Empty Cart]</div>";
         } else {
             echo "<div class=\"cart\"><table>";
-           // echo "<tr><th>Article-Id</th><th>#</th></tr>";
             foreach ($this->items as $item=>$value) {
                 foreach ($value as $option=>$num) {
                     echo "<tr><td>$item</td><td>$option</td><td>$num</td></tr>";

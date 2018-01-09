@@ -73,6 +73,7 @@ function addItem(item, option, price){
         data:"action=add&item=" + item + "&option=" + option,
         success:function(html) {
             element = document.getElementById("item"+item+option);
+            num = parseInt(element.firstChild.innerHTML.split(' '));
             element.firstChild.innerHTML = (num+1)+ " x ";
             tmpprice =  parseFloat(element.querySelector("td:nth-child(4)").innerHTML.split(' '));
             element.querySelector("td:nth-child(4)").innerHTML = (tmpprice+price).toFixed(2)+ " CHF";
@@ -89,3 +90,13 @@ function changeTotalDOM(price) {
     document.getElementById("sub-amount").innerHTML = result.toFixed(2) + " CHF";
     document.getElementById("amount").innerHTML = result.toFixed(2) + " CHF";
 }
+
+function openMenu(){
+        var menu = document.getElementById("top-menu");
+        if (menu.className === "row") {
+            menu.className += " responsive";
+        } else {
+            menu.className = "row";
+        }
+}
+

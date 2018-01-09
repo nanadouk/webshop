@@ -2,9 +2,8 @@
     <div class="column col-4" id="logo">
         <a href="index.php"><img src="assets/img/logo.png" alt="logo" /></a>
     </div>
-    <div class="column col-4">
-    </div>
-    <div class="column col-4">
+
+    <div class="column col-8">
         <div id="lang">
             <ul>
                 <?php

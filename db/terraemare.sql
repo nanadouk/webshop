@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2018 at 05:56 PM
+-- Generation Time: Jan 09, 2018 at 03:37 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -105,12 +105,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `description`, `categoryID`, `imgUrl`) VALUES
-(1, 'Pizza Margherita', '12.00', 'with tomatensauce, mozzarella and oregano', 1, 'assets/img/pizza1.jpg'),
 (2, 'Pizza Funghi', '14.00', 'with tomatensauce, mozzarella, mushrooms and oregano', 1, 'assets/img/pizza2.jpg'),
 (3, 'Pizza Prosciutto', '16.00', 'with tomatensauce, mozzarella, ham and oregano', 1, 'assets/img/pizza3.jpg'),
 (4, 'Greek salad', '9.00', 'with feta, olives, cucumbers and tomatoes', 2, 'assets/img/salad1.jpg'),
 (5, 'Caprese salad', '8.00', 'with mzzarella, basil and fresh tomatoes', 2, 'assets/img/salad2.jpg'),
-(6, 'Pizza Vegetaria ', '16.00', 'with tomato sauce, mozzarella, artichokes, onion, pepperoni, spinach and garlic', 1, 'assets/img/pizza4.jpg');
+(6, 'Pizza Vegetaria ', '16.00', 'with tomato sauce, mozzarella, artichokes, onion, pepperoni, spinach and garlic', 1, 'assets/img/pizza4.jpg'),
+(10, 'Pizza Margherita', '12.00', 'with tomatensauce, mozzarella and oregano', 1, 'assets/img/pizza1.jpg');
 
 --
 -- Indexes for dumped tables
@@ -169,7 +169,7 @@ ALTER TABLE `optionvalue`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

@@ -29,13 +29,7 @@
 .col-11 { width: 91.66%; }
 .col-12 { width: 100%; }
 
-@media only screen and (max-width: 1030px) {
+@media only screen and (max-width: 767px) {
 	.column { width: 100%; margin-bottom: 10px; }
 	.column:last-child { margin-bottom: 0; }
-	/*.slider {
-		width: 100%;
-		box-sizing: border-box;
-		overflow: hidden;
-	}
-	.slider-info{width: 100%;}*/
 }
