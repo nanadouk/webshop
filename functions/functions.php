@@ -154,10 +154,10 @@
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = 'smtp.bfh.ch';
+            $mail->Host = '***';
             $mail->SMTPAuth = true;
             $mail->Username = 'user';
-            $mail->Password = 'bfh';
+            $mail->Password = '***';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
             $mail->SMTPOptions = array(
@@ -167,9 +167,9 @@
                     'allow_self_signed' => true
                 )
             );
-            $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
+            $mail->setFrom('email.com', 'Webshop');
             $mail->addAddress($address);
-           // $mail->addAddress('anna.doukmak@students.bfh.ch');
+           // $mail->addAddress('email.com');
 
             $mail->isHTML(true);
             $mail->Subject = 'Order confirmation';
