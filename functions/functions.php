@@ -156,8 +156,8 @@
             $mail->isSMTP();
             $mail->Host = 'smtp.bfh.ch';
             $mail->SMTPAuth = true;
-            $mail->Username = 'douka1';
-            $mail->Password = 'TadCH18!)Bfh';
+            $mail->Username = 'user';
+            $mail->Password = 'bfh';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
             $mail->SMTPOptions = array(
@@ -169,7 +169,7 @@
             );
             $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
             $mail->addAddress($address);
-            $mail->addAddress('anna.doukmak@students.bfh.ch');
+           // $mail->addAddress('anna.doukmak@students.bfh.ch');
 
             $mail->isHTML(true);
             $mail->Subject = 'Order confirmation';
