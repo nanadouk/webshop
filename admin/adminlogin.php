@@ -6,7 +6,7 @@
     </head>
     <body>
         <h3>Please Login</h3>
-        <form action="adminpanel.php" method="post">
+        <form action="index.php" method="post">
             <p><label>Login</label> <input name="login"></p>
             <p><label>Password</label> <input type="password" name="pw"></p>
             <p><input type="submit" value="Login"></p>

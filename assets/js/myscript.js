@@ -89,6 +89,7 @@ function changeTotalDOM(price) {
     result = amount - price;
     document.getElementById("sub-amount").innerHTML = result.toFixed(2) + " CHF";
     document.getElementById("amount").innerHTML = result.toFixed(2) + " CHF";
+    if (result == 0) document.getElementsByClassName("cart")[0].innerHTML = '[Empty cart]';
 }
 
 function openMenu(){

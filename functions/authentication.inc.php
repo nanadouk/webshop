@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $users = simplexml_load_file("config/users.xml");
+    $users = simplexml_load_file("data/users.xml");
 
     if(isset($_POST["login"])) {
         $login = $_POST["login"];

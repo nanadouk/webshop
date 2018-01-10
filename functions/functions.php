@@ -19,14 +19,15 @@
     function navigation($language, $pageId) {
         $urlBase = $_SERVER["PHP_SELF"];
         add_param( $urlBase, "lang", $language);
-        $menuItems = array("Home", "About", "Menu", "Contact");
+        $menu = simplexml_load_file("data/menu.xml");
         $class = $pageId == "Home" ? " firstpage" : "";
         echo "<ul class='$class'>";
-        foreach ($menuItems as $item){
+        foreach ($menu->item as $item){
             $url = $urlBase;
-            add_param( $url, "page", $item);
-            $class = $pageId == $item ? "active" : "inactive";
-            echo "<li><a class=\"$class\" href=\"$url\">".t($item)."</a></li>";
+            $title = $item->title;
+            add_param( $url, "page", $title);
+            $class = $pageId == $title ? "active" : "inactive";
+            echo "<li><a class=\"$class\" href=\"$url\">".t("$title")."</a></li>";
         }
         echo "</ul>";
     }
@@ -37,13 +38,13 @@
     }
 
     function languages($language, $pageId) {
-        $languages = array("en","de");
+        $languages = simplexml_load_file("data/lang.xml");
         $urlBase = $_SERVER["PHP_SELF"];
         add_param($urlBase, "page", $pageId);
-        foreach( $languages as $lang ) {
+        foreach( $languages->lang as $lang ) {
             $url = $urlBase;
-            $class = $language == $lang ? "active" : "inactive";
-            echo "<li><a class=\"$class\" href=\"".add_param($url,"lang", $lang)."\">".strtoupper($lang)."</a></li>";
+            $class = $language == $lang->title ? "active" : "inactive";
+            echo "<li><a class=\"$class\" href=\"".add_param($url,"lang", $lang->title)."\">".strtoupper($lang->title)."</a></li>";
         }
     }
 
@@ -116,17 +117,21 @@
                         <i class=\"fa fa-trash\" aria-hidden=\"true\"></i></span></td></tr>";
                 }
             }
-            echo "</table><table class='total'><tr><td>".t("Sub-total")."</td><td id='sub-amount'>".number_format($total, 2)." CHF</td></tr>
-            <tr><td>".t("Delivery costs")."</td><td>".t("FREE")."</td></tr>
-            <tr><td>".t("Total")."</td><td id='amount'>".number_format($total, 2)." CHF</td></tr></table>
-            <a href=".get_url($language, "Clientform")." class='button-price order'>".t("Order")."</a>
-            </div>";
+            echo "</table>";
+            if ($total != 0) {
+                echo "<table class='total'><tr><td>" . t("Sub-total") . "</td><td id='sub-amount'>" . number_format($total, 2) . " CHF</td></tr>
+            <tr><td>" . t("Delivery costs") . "</td><td>" . t("FREE") . "</td></tr>
+            <tr><td>" . t("Total") . "</td><td id='amount'>" . number_format($total, 2) . " CHF</td></tr></table>
+            <a href=" . get_url($language, "Clientform") . " class='button-price order'>" . t("Order") . "</a>";
+            } else echo "[".t("Empty cart")."]</div>";
 
         }
     }
 
     function order_details($items) {
+        global $str;
         echo "<h4>".t("Order details")."</h4>";
+        $str = "<h4>".t("Order details")."</h4>";
         $total = 0;
         foreach($items as $item => $value) {
             $product = Product::getProductById($item);
@@ -136,12 +141,15 @@
                 $optionprice = $op->getSupplementary();
                 $total += ($productprice + $optionprice) * $num;
                 echo "<p>".t($product->getName()).", ".t($op->getName())." x $num</p>";
+                $str .= "<p>".t($product->getName()).", ".t($op->getName())." x $num</p>";
             }
         }
         echo "<p>".t("Total").": ".number_format($total, 2)." CHF</p></br>";
+        $str .= "<p>".t("Total").": ".number_format($total, 2)." CHF</p></br>";
     }
 
     function send_email($name, $address, $items){
+        global $str;
         require('PHPMailer/vendor/autoload.php');
         $mail = new PHPMailer(true);
         try {
@@ -149,7 +157,7 @@
             $mail->Host = 'smtp.bfh.ch';
             $mail->SMTPAuth = true;
             $mail->Username = 'douka1';
-            $mail->Password = 'TalalNusCH14!';
+            $mail->Password = 'TadCH18!)Bfh';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
             $mail->SMTPOptions = array(
@@ -165,7 +173,7 @@
 
             $mail->isHTML(true);
             $mail->Subject = 'Order confirmation';
-            $mail->Body    = "<p>".t("Dear")." ".$name."</p><p>".t("Thank you for your order")."!!</p>".order_details($items);
+            $mail->Body    = "<p>".t("Dear")." ".$name."</p><p>".t("Thank you for your order")."!!</p>".$str;
             $mail->AltBody = t("Dear")." ".$name.", ".t("Thank you for your order")."!";
             $mail->send();
             echo 'Message has been sent';

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menus>
+    <item>
+        <title>Home</title>
+    </item>
+    <item>
+        <title>About</title>
+    </item>
+    <item>
+        <title>Menu</title>
+    </item>
+    <item>
+        <title>Contact</title>
+    </item>
+</menus>

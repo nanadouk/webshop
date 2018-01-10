@@ -13,7 +13,7 @@
         <password>789</password>
     </user>
     <user>
-        <username>peter</username>
-        <password>987</password>
+        <username>admin</username>
+        <password>pw2018!panel</password>
     </user>
 </users>

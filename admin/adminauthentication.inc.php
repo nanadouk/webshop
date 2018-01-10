@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-$users = ["admin"=>"pw2018!panel"];
+$admin = "admin";
+$pw = "pw2018!panel";
+
 if(isset($_POST["login"])) {
     $login = $_POST["login"];
-    if (isset($users[$login]) && $users[$login] == $_POST["pw"]) {
+        if ($login == $admin && $_POST["pw"] == $pw) {
         $_SESSION["admin"] = $login;
     }
 }

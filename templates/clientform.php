@@ -42,7 +42,7 @@
     </p>
 
     <p>
-        <button type='submit' name="action" class="button-price next" disabled>
+        <button type='submit' name="action" class="button-price next">
             <span><?php echo t("Next")?>  <i class="fa fa-angle-right" aria-hidden="true"></i></span>
         </button>
     </p>
