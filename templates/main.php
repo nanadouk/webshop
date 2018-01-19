@@ -2,7 +2,8 @@
     <section class="column col-8" id="main-content">
         <article>
             <?php
-                include("$pageId.php");
+                $file = strtolower($pageId).".php";
+                include($file);
             ?>
         </article>
     </section>

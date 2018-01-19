@@ -64,6 +64,9 @@ h1{
 	padding: 5px 7px;
 }
 
+#top-menu .private{
+	color: #ff6b4a;
+}
 /******************HEADER************************/
 #logo img{
 	float: left;
@@ -87,6 +90,7 @@ h1{
 	text-decoration: none;
 	font-size: 16px;
 	cursor: pointer;
+	float: right;
 }
 
 #login-info a:hover{
@@ -116,6 +120,12 @@ h1{
 #login-info form, #logout-form{
 	text-align: right;
 	margin-top: 20px;
+}
+
+.err-login{
+	float: right;
+	color: #ff6b4a;
+	font-size: 16px;
 }
 
 /*********************LANGUAGES*****************/
@@ -558,4 +568,38 @@ a.confirm{
 		float: none;
 		padding: 0;
 	}
+}
+
+/**********************************REGISTRATION********************/
+.hide{
+	display: none;
+}
+
+.show{
+	display: block;
+}
+
+.save{
+	float: left;
+	border: 0;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.msg {
+	color: #ff6b4a;
+}
+
+/*******************************ORDERS*************************/
+.orders table{
+	overflow-x: auto;
+}
+
+.orders th, td{
+	padding: 5px;
+}
+
+.orders th{
+	background-color: #8fc860;
+	color: #FFFFFF;
 }

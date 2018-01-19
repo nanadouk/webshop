@@ -1,7 +1,10 @@
 <?php
     require("autoloader.php");
+    require "configDB.php";
     require("functions/functions.php");
     include ("functions/authentication.inc.php");
+    setcookie("lang", $language, time() + 60*60*24*30);
+
 ?>
 <!doctype html>
 <html lang="de-CH">
@@ -29,7 +32,7 @@
                 if ($pageId == "Home")
                     include("templates/slider.php");
                 include("templates/main.php");
-            include("templates/footer.php")
+                include("templates/footer.php")
 		    ?>
         </div>
     </body>

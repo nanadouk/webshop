@@ -1,7 +1,7 @@
 <?php
     require("../autoloader.php");
     require("functions.php");
-    include "configDB.php";
+    include "../configDB.php";
 
 
     if (isset($_POST['id'])) {

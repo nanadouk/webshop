@@ -49,19 +49,19 @@ $(function () {
         modal: true,
         buttons: {
             "Confirm": function() {
-                $("#message-confirm").css("display", "block");
-                $('#order-info').hide();
-                $( this ).dialog( "close" );
-                name = $("#clientname").text();
-                email = $("#clientemail").text();
+                address = $("#address").text();
+                tel = $("#tel").text();
                 $.ajax({
                     type:'post',
                     url: window.location.href,
-                    data: "action=send&name="+name+"&email="+email,
+                    data: "action=send&address="+address+"&tel="+tel,
                     succes: function (html) {
-                        alert("ok");
+
                     }
                 });
+                $("#message-confirm").css("display", "block");
+                $('#order-info').hide();
+                $( this ).dialog( "close" );
             },
             Cancel: function() {
                 window.location.replace("index.php");
@@ -74,7 +74,7 @@ $(function () {
         $.ajax({
             url: "functions/logout.php",
             success: function (html) {
-                window.location.replace(window.location.href);
+                document.location.href="index.php?page=Home";
             }
         });
     });

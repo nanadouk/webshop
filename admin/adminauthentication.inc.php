@@ -2,7 +2,7 @@
 session_start();
 
 $admin = "admin";
-$pw = "pw2018!panel";
+$pw = "12345";
 
 if(isset($_POST["login"])) {
     $login = $_POST["login"];

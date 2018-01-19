@@ -86,6 +86,18 @@ class Product {
         return null;
     }
 
+    static public function getProductsByCategory($category){
+        $category = (int) $category;
+        $products = array();
+        $res = DB::doQuery("SELECT * FROM product natural join category WHERE categoryName= $category");
+        if ($res) {
+            while ($product = $res->fetch_object(get_class())) {
+                $products[] = $product;
+            }
+        }
+        return $products;
+    }
+
     static public function delete($id) {
         $id = (int) $id;
         $res = DB::doQuery("DELETE FROM product WHERE id = $id");

@@ -1,13 +1,17 @@
 <?php
     session_start();
 
-    $users = simplexml_load_file("data/users.xml");
+    $users = User::getUsers();
 
     if(isset($_POST["login"])) {
-        $login = $_POST["login"];
-        foreach ($users->user as $user) {
-            if ($user->username == $login && $user->password == $_POST["pw"]) {
-                $_SESSION["user"] = $login;
+        $email = $_POST["login"];
+        foreach ($users as $user) {
+            if ($user->getEmail() == $email && $user->getPassword() == $_POST["pw"]) {
+                $_SESSION["id"] = $user->getID();
+                $_SESSION["user"] = $user->getName();
+                $_SESSION["email"] = $email;
+            } else {
+                $err_login = true;
             }
         }
     }

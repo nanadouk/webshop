@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <host>
+        <title>localhost</title>
+    </host>
+    <user>
+        <title>root</title>
+    </user>
+    <pw>
+        <title></title>
+    </pw>
+    <dbname>
+        <title>terraemare</title>
+    </dbname>
+</settings>

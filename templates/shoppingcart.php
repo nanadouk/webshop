@@ -41,14 +41,26 @@
                 }
                 break;
             case "send":
-                if (isset($_POST['name']) && isset($_POST['email']))
-                    send_email($_POST['name'], $_POST['email'], $cart->getItems());
+                if (isset($_POST['address']) && isset($_POST['tel']))
+                    $order['address'] = $_POST['tel'].", ".$_POST['address'];
+                $items = $cart->getItems();
+                $order['userID'] = (int)$_SESSION['id'];
+                foreach ($items as $item=>$value) {
+                    $order['productID'] = (int)$item;
+                    foreach ($value as $option => $num) {
+                        $order['optionvalueID'] = (int)$option;
+                        $order['quantity'] = (int)$num;
+                        $order['date'] = date("d/m/Y H:i");
+                        Order::insert($order);
+                    }
+                }
+                send_email($_SESSION['user'], $_SESSION['email']);
                 unset($_SESSION['cart']);
                 break;
         }
     }
 
-    render_cart($cart, $language);
+    render_cart($cart);
 
 ?>
         </div>

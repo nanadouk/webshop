@@ -55,5 +55,18 @@
 "Your email": "Ihre E-Mail-Adresse",
 "Order and pay": "Bestellen und bezahlen",
 "You are about to enter a binding contract of purchase": "Sie schliessen einen verbindlichen Kaufvertrag ab",
-"Confirm your purchase": "Bestätigen Sie Ihre Bestellung"
+"Confirm your purchase": "Bestätigen Sie Ihre Bestellung",
+"Registration": "Registrierung",
+"Email or/and password are incorrect": "E-Mail-Adresse und/oder Password sind falsch",
+"Save": "Speichern",
+"Your account has been saved!": "Ihres Konto wurde gespeichert!",
+"This email already exists. Your account could not be saved!": "Diese E-Mail-Adresse existiert bereits. Ihr Konto konnte nicht gespeichert werden!",
+"Please register and sign in to make your order!": "Bitte registrieren Sie sich und loggen ein, um Ihre Bestellung zu machen.",
+"Orders": "Bestellungen",
+"Date": "Datum",
+"Dish": "Gericht",
+"Price": "Preis",
+"Quantity": "Anzahl",
+"Address": "Adresse",
+"No orders": "Keine Bestellungen"
 }

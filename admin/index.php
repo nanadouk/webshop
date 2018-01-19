@@ -1,7 +1,7 @@
 <?php
     include "adminautoloader.php";
     include "adminauthentication.inc.php";
-    include "../functions/configDB.php";
+    include "../configDB.php";
     include "adminprocess.php";
 
 ?>

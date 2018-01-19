@@ -27,7 +27,10 @@
             $title = $item->title;
             add_param( $url, "page", $title);
             $class = $pageId == $title ? "active" : "inactive";
-            echo "<li><a class=\"$class\" href=\"$url\">".t("$title")."</a></li>";
+            if ($title != "Orders")
+                echo "<li><a class=\"$class\" href=\"$url\">".t("$title")."</a></li>";
+            elseif (isset($_SESSION['id']))
+                echo "<li><a class=\"$class private\" href=\"$url\">".t("$title")."</a></li>";
         }
         echo "</ul>";
     }
@@ -49,7 +52,6 @@
     }
 
     function products($pageId){
-        echo "<h1>".t($pageId)."</h1>";
         $products = Product::getProducts();
         foreach ($products as $product) {
             echo "<form class='item-wrapper' action='' method='post'>";
@@ -75,21 +77,27 @@
     }
 
     function login_info(){
+        global $language;
         if (isset($_SESSION["user"])) {
             $logged_user = $_SESSION["user"];
             echo "<div id='logout-form'><span>".t("Logged in as")." $logged_user </span>
                         <button type='submit' id='login-button'><i class='fa fa-sign-out' aria-hidden='true'></i></button></div>";
         } else {
             echo "<form action='' method='post' id='login-form'>
-                    <input name='login' id='login' placeholder='username...'>
+                    <input name='login' id='login' placeholder='email...'>
                     <input type='password' name='pw' id='pw' placeholder='password...'>
                     <mark id='login-error'></mark>
                     <button type='submit' id='login-button'><i class='fa fa-sign-in' aria-hidden='true'></i></button>
                     </form>";
+            if (isset($GLOBALS['err_login']) && $GLOBALS['err_login'] == true){
+                echo "<span class='err-login'>".t("Email or/and password are incorrect")."</span></br>";
+            }
+            echo "<a href=".get_url($language, "Registration").">".t("Registration")."</a>";
         }
     }
 
-    function render_cart(&$cart, $language){
+    function render_cart(&$cart){
+        global $language;
         if ($cart->isEmpty()) {
             echo "<div class=\"cart empty\">[".t("Empty cart")."]</div>";
         } else {
@@ -120,9 +128,14 @@
             echo "</table>";
             if ($total != 0) {
                 echo "<table class='total'><tr><td>" . t("Sub-total") . "</td><td id='sub-amount'>" . number_format($total, 2) . " CHF</td></tr>
-            <tr><td>" . t("Delivery costs") . "</td><td>" . t("FREE") . "</td></tr>
-            <tr><td>" . t("Total") . "</td><td id='amount'>" . number_format($total, 2) . " CHF</td></tr></table>
-            <a href=" . get_url($language, "Clientform") . " class='button-price order'>" . t("Order") . "</a>";
+                    <tr><td>" . t("Delivery costs") . "</td><td>" . t("FREE") . "</td></tr>
+                    <tr><td>" . t("Total") . "</td><td id='amount'>" . number_format($total, 2) . " CHF</td></tr></table>";
+                if (isset($_SESSION['id'])){
+                    $href = get_url($language, "Order");
+                } else {
+                    $href = get_url($language, "Registration");
+                }
+                echo "<a href='$href' class='button-price order'>" . t("Order") . "</a>";
             } else echo "[".t("Empty cart")."]</div>";
 
         }
@@ -130,7 +143,6 @@
 
     function order_details($items) {
         global $str;
-        echo "<h4>".t("Order details")."</h4>";
         $str = "<h4>".t("Order details")."</h4>";
         $total = 0;
         foreach($items as $item => $value) {
@@ -140,23 +152,54 @@
                 $op = Option::getOptionById($option);
                 $optionprice = $op->getSupplementary();
                 $total += ($productprice + $optionprice) * $num;
-                echo "<p>".t($product->getName()).", ".t($op->getName())." x $num</p>";
                 $str .= "<p>".t($product->getName()).", ".t($op->getName())." x $num</p>";
             }
         }
-        echo "<p>".t("Total").": ".number_format($total, 2)." CHF</p></br>";
         $str .= "<p>".t("Total").": ".number_format($total, 2)." CHF</p></br>";
+        echo $str;
     }
 
-    function send_email($name, $address, $items){
+    function render_orders(){
+        if (isset($_SESSION['id'])) {
+            $id = (int)$_SESSION['id'];
+            $orders = Order::getOrdersByUserID($id);
+            if (sizeof($orders) != 0) {
+                echo "<div class=\"orders\"><table>
+              <tr><th>" . t('Date') . "</th>
+              <th>" . t('Dish') . "</th>
+              <th>" . t('Price') . " (CHF)</th>
+              <th>" . t('Quantity') . "</th>
+              <th>" . t('Total') . " (CHF)</th>
+              <th>" . t('Address') . "</th></tr>";
+                foreach ($orders as $order) {
+                    $product = Product::getProductById($order->getProductID());
+                    $option = Option::getOptionById($order->getOptionvalueID());
+                    $price = $product->getPrice() + $option->getSupplementary();
+                    echo "<tr><td>{$order->getDate()}</td>
+                <td class='item'>" . t($product->getName()) . "<br/>
+                <span class='option'>" . t($option->getName()) . "</span></td>
+                <td>" . number_format($price, 2) . "</td>
+                <td>{$order->getQuantity()}</td>
+                <td>" . number_format($order->getQuantity() * $price, 2) . "</td>
+                <td>{$order->getAddress()}</td></tr>";
+
+                }
+                echo "</table></div>";
+            } else {
+                echo "<p>" . t('No orders') . "</p>";
+            }
+        }
+    }
+
+    function send_email($name, $address){
         global $str;
         require('PHPMailer/vendor/autoload.php');
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = '***';
+            $mail->Host = 'smtp.bfh.ch';
             $mail->SMTPAuth = true;
-            $mail->Username = 'user';
+            $mail->Username = '***';
             $mail->Password = '***';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
@@ -167,9 +210,9 @@
                     'allow_self_signed' => true
                 )
             );
-            $mail->setFrom('email.com', 'Webshop');
+            $mail->setFrom('anna.doukmak@students.bfh.ch', 'Webshop');
             $mail->addAddress($address);
-           // $mail->addAddress('email.com');
+            $mail->addAddress('anna.doukmak@students.bfh.ch');
 
             $mail->isHTML(true);
             $mail->Subject = 'Order confirmation';
@@ -202,12 +245,9 @@
         }
     }
 
-    include "configDB.php";
-
     $language = get_param("lang", "en");
     $pageId = get_param("page", "Home");
 
-    $time = time() + 60*60*24*30;
-    setcookie("lang", $language, $time);
+
 
 
